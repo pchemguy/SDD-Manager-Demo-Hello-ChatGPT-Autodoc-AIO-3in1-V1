@@ -6,7 +6,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 ## Phase 1 — Browser baseline
 
-- [ ] Phase 1 — Browser baseline
+- [x] Phase 1 — Browser baseline
     - [x] Milestone 1.1 — Usable browser package
         - [x] T-001 — Establish pinned browser verification environment
             Scope: package.json at 0.1.0, requirements-dev.txt, test fixtures in tests/conftest.py and tests/environment/, owned .tools paths/exclusions, initial docs/DEVELOPMENT.md and validated root navigation. Establish Node/Python readiness and exact pinned pytest/Playwright versions without a required global install or venv. Do not implement future platform hosts.
@@ -30,10 +30,10 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Acceptance: extract the actual final archive, verify local entry/assets, source identity, version, safe paths and absence of credentials/repository/dev files; execute applicable UI checks from extracted content. Installation guidance describes local file/static-host use and required browser environment, without claiming future platforms exist.
             Verification: python scripts/package.py release --phase 1; python scripts/package.py verify --phase 1; python -m pytest tests/build tests/packaging tests/ui -q. Retain exact archive SHA-256 and source identity in owning evidence.
             Milestone exit: perform whole-capability code review separately from test execution, fix blockers, confirm milestone 1.1 exits and demonstrate usable initial/keyboard/pointer/narrow behavior. Include docs/dev/reports/phases/1/1.1.md and refreshed HANDOFF with this task result and initial checkbox. Report TODO: None or eligible non-critical findings with stable IDs/options/owners. No standalone milestone review task.
-    - [ ] Milestone 1.2 — Phase review
+    - [x] Milestone 1.2 — Phase review
             Completion evidence: Browser ZIP/INSTALL/SHA256SUMS created and verified from allowlisted assets. Rejection tests RED: 5 unsafe paths accepted; GREEN full built suite 17 passed in 13.94s. Actual archive extracted and UI suite passed (see milestone report). Whole-capability code review found no unresolved violation; milestone 1.1 report and HANDOFF included. TODO None. No desktop/extension delivery claimed.
 
-        - [ ] T-004 — Review test and report phase 1
+        - [x] T-004 — Review test and report phase 1
             Scope: phase 1 cross-component/source/package review, applicable fixes/checks, release-ready 0.1.0 notes and docs/dev/reports/phases/1/PHASE-REPORT.md with HANDOFF. This task does not publish a release before integration.
             Depends on: milestone 1.1 complete and its task issues/milestone closed and read back; T-001 through T-003.
             Acceptance: verify PLAN phase 1 exits, review UI/build/package interactions, no unresolved SPEC/PLAN violation, actual archive identities and verification limits. Audit one-task result/evidence/checklist commit boundaries. Keep phase review milestone at exactly this one task.
@@ -43,6 +43,8 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 - [ ] Phase 2 — Windows desktop
     - [ ] Milestone 2.1 — Portable desktop package
+            Completion evidence: Phase source/package review completed; added failing canonical-secret fixture and repaired explicit credential rejection. Final suite 18 passed in 11.95s; prior extracted-archive UI 8 passed remains applicable. Task persistence audit T-001 through T-003 verified. Phase report/HANDOFF, review milestone status and release-ready notes included; integration/publication remain pending. TODO None.
+
         - [ ] T-005 — Add the isolated Electron application host
             Scope: platforms/electron/main.cjs, desktop path in scripts/build.mjs, tests/desktop/ host/resource fixtures and version 0.2.0 metadata. Generate a minimal desktop resources/app manifest and load canonical renderer assets through the restricted local protocol. No preload, privileged renderer API or forked UI.
             Depends on: phase 1 integrated/published and release 0.1.0 verified; T-004; authorized phase 2 range and verified phase 2 tracking activation.

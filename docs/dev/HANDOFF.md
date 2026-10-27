@@ -1,9 +1,9 @@
 # Project handoff
 
-Checkpoint: phase 1 milestone 1.1, T-003 completion.
+Checkpoint: phase 1 complete task boundary T-004; integration and release pending.
 
-Browser baseline implemented and actual ZIP verified. [Milestone report](reports/phases/1/1.1.md), [environment](reports/phases/1/ENVIRONMENT.md), [TASKS](TASKS.md) and [package QC](DOCS-QC-REPORT.md) own evidence. User authorized QC and all T-001 through T-012 with phase releases.
+Browser baseline and verified static archive ready. [Phase report](reports/phases/1/PHASE-REPORT.md), [milestone report](reports/phases/1/1.1.md), [TASKS](TASKS.md) and [environment](reports/phases/1/ENVIRONMENT.md) own evidence.
 
-Working branch phase/1-browser-baseline; creation parent/integration target main at 1c47661ed5b8a1593638f07b6dd64cfba499a8c5. Documentation integrated/published; documentation milestone closed.
+Authorized: full T-001 through T-012 and cumulative releases after each integrated phase, per user Run QC and implement. Working phase/1-browser-baseline; parent/target main from 1c47661ed5b8a1593638f07b6dd64cfba499a8c5.
 
-Publish/read back T-003 and close its issue, then milestone 1.1; execute T-004. Do not integrate until complete phase exits. Native full-Chromium and Windows execution unavailable; feasible shell/Firefox and artifact checks remain required.
+Publish/read back T-004, close its issue and milestone 1.2, audit phase task persistence, explicitly integrate/verify/publish main, then release 0.1.0 from its default-branch release commit with actual asset download hashes. Only afterward activate authorized phase 2. Native Windows/full-Chromium unavailable; feasible checks passed.

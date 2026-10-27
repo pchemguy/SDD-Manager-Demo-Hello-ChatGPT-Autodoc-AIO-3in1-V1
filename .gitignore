@@ -10,3 +10,6 @@ __pycache__/
 *.pyc
 build/
 dist/
+
+/RELEASE-NOTES.md
+/.release-highlights.md

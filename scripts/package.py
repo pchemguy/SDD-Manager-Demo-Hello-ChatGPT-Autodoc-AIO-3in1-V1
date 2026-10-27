@@ -41,6 +41,9 @@ def verify_archive(path,kind):
         if any(stat.S_ISLNK(i.external_attr>>16) for i in z.infolist()):raise ValueError('Archive symlink')
         required=set(COMMON+['INSTALL.md','LICENSE'])
         if set(names)!=required:raise ValueError('Unexpected or missing archive members')
+        for n in names:
+            if re.search(rb'(github_pat_[A-Za-z0-9_]{10,}|gh[pousr]_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)',z.read(n)):
+                raise ValueError('Credential material in archive')
         metadata=json.loads(z.read('version.json'))
         if metadata['version']!=version() or metadata['platform']!=kind:raise ValueError('Archive version/platform mismatch')
         if not re.fullmatch('[0-9a-f]{40}',metadata['sourceRevision']):raise ValueError('Invalid source identity')

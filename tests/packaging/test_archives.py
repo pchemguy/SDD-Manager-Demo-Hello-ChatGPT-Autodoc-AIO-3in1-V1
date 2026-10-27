@@ -23,3 +23,15 @@ def test_actual_archive_integrity_and_rejections(tmp_path):
     with zipfile.ZipFile(bad,'w') as z:
         for n,b in files.items():z.writestr(n,b)
     with pytest.raises(ValueError,match='missing'):pack.verify_archive(bad,'browser')
+
+def test_credentials_rejected_even_when_canonical_assets_match(tmp_path,monkeypatch):
+    source=ROOT/'dist'/pack.archive_name('browser')
+    with zipfile.ZipFile(source) as z:files={n:z.read(n) for n in z.namelist()}
+    files['app.js']+=b'\nconst secret="github_pat_synthetic12345678901234567890";'
+    (tmp_path/'app').mkdir();(tmp_path/'package.json').write_bytes((ROOT/'package.json').read_bytes())
+    for n in ['index.html','app.js','styles.css','bootstrap.js']:(tmp_path/'app'/n).write_bytes(files[n])
+    archive=tmp_path/'credential.zip'
+    with zipfile.ZipFile(archive,'w') as z:
+        for n,b in files.items():z.writestr(n,b)
+    monkeypatch.setattr(pack,'ROOT',tmp_path)
+    with pytest.raises(ValueError,match='Credential'):pack.verify_archive(archive,'browser')
