@@ -67,3 +67,16 @@ python -m pytest tests/extensions -q -k chromium
 ```
 
 Use built output, not source manifest templates; version comes from package.json. The worker uses Chrome 142 open/closed events and authenticated window-scoped ports. Session tokens, per-port sequence validation and readiness acknowledgments preserve a live selection during reconnection and reject obsolete/wrong-window messages. Tests cover the real worker in a modeled API harness and the real panel bridge/DOM in both working browsers. They do not claim native sidePanel events. Full Chromium launch was already diagnosed as host socket EPERM with --no-sandbox; native panel checks remain excluded on this host.
+
+## Firefox sidebar
+
+```text
+node scripts/build.mjs firefox
+python -m pytest tests/extensions -q
+```
+
+Firefox uses its MV3 sidebar_action with a stable Gecko ID and a Firefox 140 floor. It reuses the canonical browser bootstrap and requests no storage or host permissions. Module/manifest/shared-document checks passed; recreated documents start red. Load the built manifest or final ZIP through about:debugging temporary add-on loading, then select Hello World in the native sidebar chooser. Temporary installation is removed on browser restart. This is not a signed or store-distributed add-on.
+
+A native temporary-install capability probe was attempted through the isolated managed Firefox driver. The internal about:debugging navigation timed out under both load and commit waits; subsequent privileged capability inspection was unresponsive. Native installation/sidebar events are not claimed by the passing shared-document tests.
+
+The bounded native Firefox probe was stopped at 180 seconds; a subsequent exact-binary process check found no remaining owned Firefox process. This native installation attempt is excluded, not a passing add-on test.
