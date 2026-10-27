@@ -11,3 +11,7 @@ T-009 through T-011 each have one initial task-owned closing commit containing r
 TODO: None. Native Windows launch, native Chromium sidePanel and Firefox installation/sidebar events are explicit unavailable-facility exclusions, not passes or deferred code TODOs. Details and bounded probes are retained in task/development evidence.
 
 Next: publish/close T-012 and review milestone, integrate/verify/publish complete phase, then publish byte-verified release 0.3.0 from the actual default-branch release commit. No release success is asserted here.
+
+## T-012 forward verification repair
+
+P3-002: tracked-file audit found broad build/ ignore also excluded tests/build/test_build.py. Earlier checks executed this local test file, but it was not present in prior published task trees. Narrowed root generated-output rules to /build/ and /dist/ and included the previously omitted builder tests in the tracked source. This is a current reproducibility/acceptance repair; it does not rewrite earlier commits or claim those trees contained the omitted file. Hold integration until repaired tracked source is verified and T-012 closure read back. No second initial task closure is created.

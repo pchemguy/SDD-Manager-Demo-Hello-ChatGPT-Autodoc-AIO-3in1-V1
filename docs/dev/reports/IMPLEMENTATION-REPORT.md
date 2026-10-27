@@ -17,3 +17,7 @@ Source/host/adapter modeling and actual renderer checks are distinguished from n
 ## TODO aggregation
 
 None. All confirmed milestone/phase findings were resolved. Unavailable native checks remain evidence limits, not certified passes or hidden code deferrals.
+
+## Final tracked-source repair
+
+P3-002 identified a broad ignore rule that omitted the locally executed builder tests from Git. Root output ignores are narrowed and the builder test source is now included. The final source requires fresh tracked-checkout build/test verification before integration. Earlier release/task history is preserved; earlier local builder checks are not presented as tests included in those historical trees.
