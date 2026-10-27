@@ -42,7 +42,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 ## Phase 2 — Windows desktop
 
 - [ ] Phase 2 — Windows desktop
-    - [ ] Milestone 2.1 — Portable desktop package
+    - [x] Milestone 2.1 — Portable desktop package
             Completion evidence: Phase source/package review completed; added failing canonical-secret fixture and repaired explicit credential rejection. Final suite 18 passed in 11.95s; prior extracted-archive UI 8 passed remains applicable. Task persistence audit T-001 through T-003 verified. Phase report/HANDOFF, review milestone status and release-ready notes included; integration/publication remain pending. TODO None.
 
         - [x] T-005 — Add the isolated Electron application host
@@ -61,7 +61,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Verification: node scripts/build.mjs desktop; python scripts/package.py release --phase 2; python -m pytest tests/desktop tests/packaging -q including failure fixtures and actual distribution inventory/architecture. Extract into a path containing spaces and inspect all resolved references. Native Windows execution is conditional on an available facility and reported untested otherwise, without an added blocker or waiver request.
             Completion evidence: Pinned official Electron 45.0.0 win32-x64, size 158223852 and SHA-256 ae53887a23bb640369c93dbd38c408a2af5c0deb86f2fa76c6c244cb444b7f47. Mismatching-checksum test initially failed to reject bytes; implemented pre-extraction size/hash validation, safe inventory extraction and complete portable Windows assembly. Actual two-platform release build and verification passed, including x64 PE, byte equality of all upstream runtime files, app entry/metadata/shared assets/notices and CRC. Host/package tests result retained in task evidence after observed run. Native Windows launch not tested. Verification command python -m pytest tests/desktop tests/packaging -q: 11 passed in 6.35s.
 
-        - [ ] T-007 — Verify cumulative browser and Windows delivery
+        - [x] T-007 — Verify cumulative browser and Windows delivery
             Scope: cumulative phase 2 assembly/checks in scripts/package.py, tests/build/, tests/packaging/, docs/INSTALL.md, README and affected renderer regression checks. Regenerate browser/desktop packages at the same version 0.2.0.
             Depends on: T-005, T-006.
             Contracts: applicable R1-R6,R9-R10 and A1-A3,A6.
@@ -69,6 +69,8 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Verification: python scripts/package.py release --phase 2; python scripts/package.py verify --phase 2; python -m pytest tests/ui tests/build tests/desktop tests/packaging -q. Apply available-host scope and inspect screenshots from the browser/desktop renderer asset set without claiming native Windows output.
             Milestone exit: whole-capability code review, required regressions, blocker repairs and PLAN 2.1 exit/demonstration evidence. Include docs/dev/reports/phases/2/2.1.md and refreshed HANDOFF with this task result and initial checkbox; distinguish excluded native checks and retained TODOs. No standalone milestone review task.
     - [ ] Milestone 2.2 — Phase review
+            Completion evidence: Verified cumulative browser/Windows 0.2.0 assets, explicit install/unsigned/native-limit guidance and matching shared/source identities. Added failing aggregate-source mismatch regression then source consistency check. Combined suite 22 passed in 22.31s. Actual full Windows ZIP extracted under spaced path; packaged host passed modeled API harness and packaged renderer passed 8 UI checks in 14.46s. Whole-capability code review and milestone 2.1 report/HANDOFF included; TODO None. Native Windows not tested.
+
         - [ ] T-008 — Review test and report phase 2
             Scope: desktop/browser integration and package/source review, applicable repairs/checks, release-ready 0.2.0 notes, docs/dev/reports/phases/2/PHASE-REPORT.md and HANDOFF.
             Depends on: milestone 2.1 complete and its issues/milestone closed/read back; T-005 through T-007.

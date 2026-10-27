@@ -70,9 +70,11 @@ def verify(phase):
     if actual!=expected:raise ValueError('Incomplete or unexpected cumulative archive set')
     sums=dict(line.split('  ')[::-1] for line in (dist/'SHA256SUMS').read_text().splitlines())
     if set(sums)!=expected:raise ValueError('Checksum inventory mismatch')
+    sources=set()
     for kind in kinds(phase):
-        path=dist/archive_name(kind);verify_archive(path,kind)
+        path=dist/archive_name(kind);sources.add(verify_archive(path,kind)['sourceRevision'])
         if hashlib.sha256(path.read_bytes()).hexdigest()!=sums[path.name]:raise ValueError('Archive checksum mismatch')
+    if len(sources)!=1:raise ValueError('Cumulative archive source identities differ')
     print('Verified',len(expected),'final platform archive(s)',version())
 
 

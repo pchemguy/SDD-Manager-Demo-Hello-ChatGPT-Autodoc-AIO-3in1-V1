@@ -36,3 +36,13 @@ def test_credentials_rejected_even_when_canonical_assets_match(tmp_path,monkeypa
         for n,b in files.items():z.writestr(n,b)
     monkeypatch.setattr(pack,'ROOT',tmp_path)
     with pytest.raises(ValueError,match='Credential'):pack.verify_archive(archive,'browser')
+
+def test_cumulative_sources_must_agree(tmp_path,monkeypatch):
+    (tmp_path/'package.json').write_text('{"version":"0.2.0"}')
+    dist=tmp_path/'dist';dist.mkdir()
+    names=['hello-world-0.2.0-browser.zip','hello-world-0.2.0-windows-x64.zip']
+    for name in names:(dist/name).write_bytes(b'validated archive fixture')
+    (dist/'SHA256SUMS').write_text(''.join(hashlib.sha256((dist/n).read_bytes()).hexdigest()+'  '+n+'\n' for n in names))
+    monkeypatch.setattr(pack,'ROOT',tmp_path)
+    monkeypatch.setattr(pack,'verify_archive',lambda path,kind:{'sourceRevision':('a' if kind=='browser' else 'b')*40})
+    with pytest.raises(ValueError,match='source'):pack.verify(2)

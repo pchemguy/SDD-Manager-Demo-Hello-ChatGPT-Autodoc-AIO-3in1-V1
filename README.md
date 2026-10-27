@@ -1,7 +1,7 @@
 # Hello World
 
-A tiny color selector: Hello World and three vertically stacked native radio buttons. The browser baseline works without Node.js, a development server or backend.
+Hello World with an immediate red, blue or green radio selection, shared between a browser build and a portable Windows Electron application. No separate Node.js, development server or backend is needed to use either package.
 
-See [installation](docs/INSTALL.md), [development and checks](docs/DEVELOPMENT.md), and [project scope](docs/dev/PROJECT.md). Windows and sidebar packages follow in bounded delivery phases.
+Get the packages from [GitHub releases](https://github.com/pchemguy/SDD-Manager-Demo-Hello-ChatGPT-Autodoc-AIO-3in1-V1/releases). See [installation and verification limits](docs/INSTALL.md), [development](docs/DEVELOPMENT.md) and [scope](docs/dev/PROJECT.md). Chromium and Firefox sidebars are the final delivery phase.
 
 Development uses [SDD Manager](SDD-MANAGER.md). See [AI disclosure](AI_DISCLOSURE.md).
