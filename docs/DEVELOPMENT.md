@@ -80,3 +80,13 @@ Firefox uses its MV3 sidebar_action with a stable Gecko ID and a Firefox 140 flo
 A native temporary-install capability probe was attempted through the isolated managed Firefox driver. The internal about:debugging navigation timed out under both load and commit waits; subsequent privileged capability inspection was unresponsive. Native installation/sidebar events are not claimed by the passing shared-document tests.
 
 The bounded native Firefox probe was stopped at 180 seconds; a subsequent exact-binary process check found no remaining owned Firefox process. This native installation attempt is excluded, not a passing add-on test.
+
+## Complete cumulative release set
+
+```text
+python scripts/package.py release --phase 3
+python scripts/package.py verify --phase 3
+python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q
+```
+
+The four named ZIPs, INSTALL.md and SHA256SUMS belong to the same root version and source identity. The publisher rebuilds at the pinned default-branch release commit and verifies actual uploaded/downloaded bytes. Raw platform manifests are templates; always load built/extracted packages. HELLO_UI_ROOT lets the common UI suite exercise an extracted artifact directly. Native-only unavailable checks are recorded explicitly in reports, not counted as passed or hidden as generic skips.

@@ -80,7 +80,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 ## Phase 3 — Browser sidebars
 
 - [ ] Phase 3 — Browser sidebars
-    - [ ] Milestone 3.1 — Dual sidebar packages
+    - [x] Milestone 3.1 — Dual sidebar packages
             Completion evidence: Phase 2 code review and cumulative package acceptance complete; 22 fresh tests passed in 18.78s and package verification passed. Prior actual extracted-Windows renderer 8 UI checks remains applicable. Single-task result/evidence/checklist boundaries verified for T-005 through T-007. Reports, HANDOFF and review status included; TODO None. Integration/release publication remain pending; native Windows execution untested.
 
         - [x] T-009 — Add the Chromium side panel lifecycle adapter
@@ -99,7 +99,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Verification: node scripts/build.mjs firefox; python -m pytest tests/extensions -q -k firefox plus shared UI/build regressions. Load the actual extracted extension temporarily in a suitable isolated Firefox host where available, check sidebar open/change/reopen and independent windows, and record host/version/evidence. Keep ordinary Playwright Firefox page tests and native add-on tests distinct; Playwright page automation alone is not proof of native extension installation.
             Completion evidence: Added Firefox MV3 sidebar template/assembler with stable Gecko ID, Firefox 140 floor, no storage/host permissions and canonical shared bootstrap. RED requested Firefox build failed before the route existed; GREEN full extension module/manifest/shared-document suite: 7 passed in 5.71s. Document recreation starts red and resizing preserves selection. Native temporary-install probe could not navigate about:debugging under load or commit waits; capability inspection remained unresponsive, bounded job stopped at 180 seconds and exact owned-binary process check confirmed cleanup. Native Firefox installation/sidebar events excluded, not passed; ordinary Firefox app checks remain working.
 
-        - [ ] T-011 — Package and verify every delivered platform
+        - [x] T-011 — Package and verify every delivered platform
             Scope: phase 3 cumulative assembly in scripts/package.py, tests/packaging/, relevant build/extension regression checks, docs/INSTALL.md and README. Produce browser, Windows, Chromium-dev and Firefox-dev archives at version 0.3.0, plus final release instructions/checksums.
             Depends on: T-009, T-010, with prior desktop packaging retained.
             Contracts: R1-R10 and applicable A1-A6.
@@ -107,6 +107,8 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Verification: python scripts/package.py release --phase 3; python scripts/package.py verify --phase 3; python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q with capabilities/exclusions recorded. Native-only checks are selectable rather than silently skipped as coverage; report excluded counts and reasons. Inspect narrow rendered output for both extension asset sets and available native sidebars.
             Milestone exit: whole-capability code review, cross-platform regressions, all required blocker repairs, PLAN 3.1 exits/demonstration and TODO review. Include docs/dev/reports/phases/3/3.1.md and refreshed HANDOFF in this task's result/initial checkbox commit. No standalone milestone review task.
     - [ ] Milestone 3.2 — Phase review
+            Completion evidence: Implemented complete cumulative 0.3.0 browser/Windows/Chromium-dev/Firefox-dev release assembly and exact extension manifest, capabilities, source, version, entry/shared bytes, inventory, CRC, credential and checksum checks. Final-set RED failed before implementation. Combined suite 32 passed in 22.85s; extracted UI suites each passed 8 (32 total across four artifacts). Rendered screenshots inspected and retained. Whole-capability review, milestone report/HANDOFF and final install/native-limit instructions included. Native Windows/sidebar checks explicitly excluded; TODO None.
+
         - [ ] T-012 — Review test and report the complete application
             Scope: final cross-platform/source/package review, applicable repairs/checks, release-ready 0.3.0 notes, docs/dev/reports/phases/3/PHASE-REPORT.md, docs/dev/reports/IMPLEMENTATION-REPORT.md and HANDOFF.
             Depends on: milestone 3.1 complete and all its task issues/milestone closed/read back; T-009 through T-011; earlier phase evidence remains valid.

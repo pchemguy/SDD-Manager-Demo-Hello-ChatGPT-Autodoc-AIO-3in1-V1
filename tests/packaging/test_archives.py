@@ -46,3 +46,21 @@ def test_cumulative_sources_must_agree(tmp_path,monkeypatch):
     monkeypatch.setattr(pack,'ROOT',tmp_path)
     monkeypatch.setattr(pack,'verify_archive',lambda path,kind:{'sourceRevision':('a' if kind=='browser' else 'b')*40})
     with pytest.raises(ValueError,match='source'):pack.verify(2)
+
+def test_final_platform_set_is_cumulative():
+    assert pack.kinds(3)==['browser','windows-x64','chromium-dev','firefox-dev']
+
+@pytest.mark.parametrize('platform',['chromium','firefox'])
+def test_extension_archive_rejects_new_storage_capability(platform,tmp_path,monkeypatch):
+    path=ROOT/'dist'/pack.archive_name(platform+'-dev')
+    pack.verify_extension(path,platform)
+    with zipfile.ZipFile(path) as z:files={n:z.read(n) for n in z.namelist()}
+    manifest=json.loads(files['manifest.json']);manifest['permissions']=['storage'];files['manifest.json']=json.dumps(manifest).encode()
+    folder=tmp_path/'platforms'/platform;folder.mkdir(parents=True)
+    template=dict(manifest);del template['version'];(folder/'manifest.json').write_text(json.dumps(template))
+    (tmp_path/'package.json').write_bytes((ROOT/'package.json').read_bytes())
+    bad=tmp_path/'bad.zip'
+    with zipfile.ZipFile(bad,'w') as z:
+        for n,b in files.items():z.writestr(n,b)
+    monkeypatch.setattr(pack,'ROOT',tmp_path)
+    with pytest.raises(ValueError,match='contract mismatch'):pack.verify_extension(bad,platform)

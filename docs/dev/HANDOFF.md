@@ -1,7 +1,7 @@
 # Project handoff
 
-Checkpoint: phase 2 T-008 complete; [phase report](reports/phases/2/PHASE-REPORT.md) and [TASKS](TASKS.md) own evidence. Portable Windows plus browser assets verified; native Windows execution untested.
+Checkpoint: phase 3 milestone 3.1, T-011. [Milestone report](reports/phases/3/3.1.md), [TASKS](TASKS.md) and [development](../DEVELOPMENT.md) own current evidence. All four 0.3.0 archives verified; 32 product checks and 32 extracted-artifact UI checks passed. Native Windows/sidebar evidence remains excluded and explicit.
 
-User authorized full T-001 through T-012 and releases. Working phase/2-windows-desktop from main at 2ff3576be77653eb61a0a72b48178a5066c22bfd; target main. Release 0.1.0 is published and byte-verified.
+Authorized all T-001 through T-012 and cumulative releases. Working phase/3-browser-sidebars; creation parent/integration target main at d8f2ff54d76cf97300822ac3b9e164b94105c3d4. Releases 0.1.0 and 0.2.0 published and downloaded-byte verified.
 
-Next: publish/read back T-008, close its issue and review milestone 2.2, audit task persistence and integrate/verify/publish the complete phase. Create release 0.2.0 only from the actual default-branch release commit with both archives, instructions and checksums; verify downloaded bytes. Then activate phase 3. No full-Chromium/native-Windows success claim.
+Publish/read back T-011, close its issue and milestone 3.1, then execute T-012. Complete phase integration and release 0.3.0 before reporting final publication.

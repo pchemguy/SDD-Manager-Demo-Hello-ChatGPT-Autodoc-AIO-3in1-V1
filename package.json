@@ -6,5 +6,5 @@
   "engines": {
     "node": ">=22"
   },
-  "deliveryPhase": 2
+  "deliveryPhase": 3
 }
