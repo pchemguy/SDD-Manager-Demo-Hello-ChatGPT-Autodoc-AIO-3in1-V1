@@ -23,6 +23,7 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 | DOCS-002 | PROJECT proposal SHA-256 fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; human approval received in the user response "OK." on 2026-10-27; approved bytes retained unchanged. Reviewed against the complete user scope, document role and root instructions; all three platforms and cumulative artifact releases covered. Lifecycle and distribution choices accepted with the brief. DOCS-002 completion accompanies this approval record. |
 | DOCS-003 | Define shared UI and isolated platform hosts Autodoc scoped preapproval applies. Reviewed approved PROJECT coverage, ownership and dependency direction, lifecycle reset design, source-backed platform constraints, package isolation and product-document content boundaries. No unresolved architecture blocker; runtime/API evidence remains to be collected during implementation. Content identities: docs/dev/ARCHITECTURE.md SHA-256 a7d383106368f0a75a857189f687e1cb2bd26dc6c09672b0cfc3d3d095c262d7. |
 | DOCS-004 | Define component ownership and lifecycle seams Autodoc scoped preapproval applies. Reviewed architecture-to-component allocation, current-state ownership, reset/reconnect races, resource teardown and error boundaries. No framework, storage or speculative privileged bridge introduced. Preparation evidence rows normalized into one table; no product design change. Content identities: docs/dev/DECOMPOSITION.md SHA-256 f5b6c4c7ca13e31f4bda6ef17646cfe8a35a76ad4f2426637e81952c0db57e8f. |
+| DOCS-005 | Specify behavior and cumulative artifact acceptance Autodoc scoped preapproval applies. SPEC/design conformance Ready; adjacent SPEC-REVIEW-REPORT records exact hashes, R1-R10 coverage, lifecycle/error boundaries and explicit verification exclusions. No unresolved confirmed finding. Content identities: docs/dev/SPEC.md SHA-256 9a0d288aabe1839f790f45b2d2f6bacc2f11d350b18e4aa562b48dcddb611cc6; docs/dev/SPEC-REVIEW-REPORT.md SHA-256 edf5d5106e8caced255b7b39359dff35382f45de8bc2539fd8d971823128cfab. |
 | DOCS-009 | Not authorized by autodoc stop; remains pending. |
 
 ## Initialization
@@ -37,4 +38,4 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 
 ## Pending transitions
 
-Publish/read back the DOCS-004 completion commit, then close/read back its preparation issue before dependent progression. Continue only through DOCS-008; package QC and implementation remain outside the current range.
+Publish/read back the DOCS-005 completion commit, then close/read back its preparation issue before dependent progression. Continue only through DOCS-008; package QC and implementation remain outside the current range.
