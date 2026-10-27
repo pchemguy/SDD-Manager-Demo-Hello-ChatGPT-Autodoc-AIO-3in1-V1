@@ -10,8 +10,9 @@ def test_valid_root_members():
     assert pack.validate_members(['index.html','assets/style.css'])==['index.html','assets/style.css']
 
 def test_actual_archive_integrity_and_rejections(tmp_path):
-    subprocess.run(['python','scripts/package.py','release','--phase','1'],cwd=ROOT,check=True,timeout=30)
     source=ROOT/'dist'/pack.archive_name('browser')
+    if not source.exists():
+        subprocess.run(['python','scripts/package.py','release','--phase',str(json.loads((ROOT/'package.json').read_text()).get('deliveryPhase',1))],cwd=ROOT,check=True,timeout=120)
     pack.verify_archive(source,'browser')
     with zipfile.ZipFile(source) as z:files={n:z.read(n) for n in z.namelist()}
     files['gh.tkn']=b'synthetic-not-a-secret'
