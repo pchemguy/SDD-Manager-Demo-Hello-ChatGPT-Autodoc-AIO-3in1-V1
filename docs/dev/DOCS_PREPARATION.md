@@ -20,7 +20,7 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 | Task | Evidence / decision basis |
 | --- | --- |
 | DOCS-001 | All four root files existed and were preserved byte for byte, checked against baseline SHA-256 identities. Task list copied from the same repository-pinned SDD Manager 0.15.4 package. Default provenance setup completed as described below. Initialization completion is in this commit; publication and issue closure must be read back before dependent work. |
-| DOCS-002 | PROJECT not yet proposed; human approval required. |
+| DOCS-002 | PROJECT proposal SHA-256 fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; human approval pending. Reviewed against the complete user scope, document role and root instructions; all three platforms and cumulative artifact releases covered. Lifecycle and distribution proposals are explicit; no acceptance inferred. DOCS-002 remains unchecked. |
 | DOCS-003 through DOCS-008 | Not started; later document approvals preapproved by autodoc. |
 | DOCS-009 | Not authorized by autodoc stop; remains pending. |
 
@@ -36,4 +36,4 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 
 ## Pending transitions
 
-Publish/read back this initialization commit and close/read back DOCS-001 issue #1. Then prepare and publish the PROJECT proposal; no dependent architecture before PROJECT approval.
+Initialization publication and DOCS-001 issue #1 closure were verified. Publish/read back the PROJECT proposal, then await human approval of that exact state and its lifecycle/distribution proposals before dependent ARCHITECTURE. DOCS-002 issue #2 remains open.
