@@ -13,8 +13,8 @@ def version():return json.loads((ROOT/'package.json').read_text())['version']
 def run(*args):subprocess.run(args,cwd=ROOT,check=True,timeout=60)
 def archive_name(kind):return f'hello-world-{version()}-{kind}.zip'
 def kinds(phase):
-    if phase not in [1,2]:raise ValueError('Platform phase is not implemented')
-    return ['browser']+(['windows-x64'] if phase>=2 else [])
+    if phase not in [1,2,3]:raise ValueError('Platform phase is not implemented')
+    return ['browser']+(['windows-x64'] if phase>=2 else [])+(['chromium-dev','firefox-dev'] if phase>=3 else [])
 def write_zip(target,files):
     validate_members(list(files))
     target.parent.mkdir(parents=True,exist_ok=True);temporary=target.with_suffix('.partial')
@@ -28,8 +28,10 @@ def write_zip(target,files):
         if temporary.exists():temporary.unlink()
 def files_for(kind):
     if kind=='windows-x64':return windows_files()
-    out=ROOT/'build'/kind
-    files={n:out/n for n in COMMON}
+    platform=kind.removesuffix('-dev')
+    out=ROOT/'build'/platform
+    names=COMMON+(['manifest.json'] if kind.endswith('-dev') else [])+(['background.js'] if platform=='chromium' else [])
+    files={n:out/n for n in names}
     files.update({'INSTALL.md':ROOT/'docs/INSTALL.md','LICENSE':ROOT/'LICENSE'})
     for p in files.values():
         if not p.is_file() or p.is_symlink():raise ValueError('Missing or unsafe source file: '+p.name)
@@ -37,6 +39,7 @@ def files_for(kind):
 
 def verify_archive(path,kind):
     if kind=='windows-x64':return verify_windows(path)
+    if kind.endswith('-dev'):return verify_extension(path,kind.removesuffix('-dev'))
     with zipfile.ZipFile(path) as z:
         names=z.namelist();validate_members(names)
         if len(names)!=len(set(names)):raise ValueError('Duplicate archive member')
@@ -58,7 +61,7 @@ def release(phase):
     dist=ROOT/'dist';dist.mkdir(exist_ok=True)
     for kind in kinds(phase):
         if kind=='windows-x64':assemble_windows()
-        else:run('node','scripts/build.mjs',kind)
+        else:run('node','scripts/build.mjs',kind.removesuffix('-dev'))
         write_zip(dist/archive_name(kind),files_for(kind))
     (dist/'INSTALL.md').write_bytes((ROOT/'docs/INSTALL.md').read_bytes())
     (dist/'SHA256SUMS').write_text(''.join(hashlib.sha256((dist/archive_name(k)).read_bytes()).hexdigest()+'  '+archive_name(k)+'\n' for k in kinds(phase)))
@@ -148,6 +151,31 @@ def verify_windows(path):
             for name in runtime:
                 if z.read('HelloWorld.exe' if name=='electron.exe' else name)!=original.read(name):raise ValueError('Official runtime content mismatch')
         if z.testzip():raise ValueError('Windows archive CRC failure')
+        return meta
+
+def verify_extension(path,platform):
+    expected=set(COMMON+['manifest.json','INSTALL.md','LICENSE']+(['background.js'] if platform=='chromium' else []))
+    with zipfile.ZipFile(path) as z:
+        names=z.namelist();validate_members(names)
+        if set(names)!=expected or len(names)!=len(set(names)):raise ValueError('Incomplete or unexpected extension inventory')
+        if any(stat.S_ISLNK(i.external_attr>>16) for i in z.infolist()):raise ValueError('Extension symlink')
+        for name in names:
+            if re.search(rb'(github_pat_[A-Za-z0-9_]{10,}|gh[pousr]_[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----)',z.read(name)):raise ValueError('Credential material in extension')
+        manifest=json.loads(z.read('manifest.json'));meta=json.loads(z.read('version.json'))
+        template=json.loads((ROOT/'platforms'/platform/'manifest.json').read_text());template['version']=version()
+        if manifest!=template or manifest['manifest_version']!=3:raise ValueError('Extension manifest mismatch')
+        if meta['version']!=version() or meta['platform']!=platform:raise ValueError('Extension version/platform mismatch')
+        if not re.fullmatch('[0-9a-f]{40}',meta['sourceRevision']):raise ValueError('Invalid extension source identity')
+        if manifest.get('host_permissions') or manifest.get('content_scripts') or manifest.get('web_accessible_resources'):raise ValueError('Unexpected extension capability')
+        if platform=='chromium':
+            if manifest['permissions']!=['sidePanel'] or manifest['minimum_chrome_version']!='142' or manifest['side_panel']['default_path']!='index.html':raise ValueError('Chromium panel contract mismatch')
+            if z.read('background.js')!=(ROOT/'platforms/chromium/background.js').read_bytes():raise ValueError('Chromium worker mismatch')
+        else:
+            if manifest.get('permissions') or manifest['sidebar_action']['default_panel']!='index.html' or manifest['browser_specific_settings']['gecko']['strict_min_version']!='140.0':raise ValueError('Firefox sidebar contract mismatch')
+        for name in ['index.html','app.js','styles.css','bootstrap.js']:
+            source=ROOT/'platforms/chromium/panel.js' if platform=='chromium' and name=='bootstrap.js' else ROOT/'app'/name
+            if z.read(name)!=source.read_bytes():raise ValueError('Extension shared/entry asset mismatch')
+        if z.testzip():raise ValueError('Extension CRC failure')
         return meta
 
 if __name__=='__main__':

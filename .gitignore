@@ -8,8 +8,8 @@
 .pytest_cache/
 __pycache__/
 *.pyc
-build/
-dist/
+/build/
+/dist/
 
 /RELEASE-NOTES.md
 /.release-highlights.md

@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Hello World",
+  "description": "A three-color Hello World selector in the sidebar.",
+  "browser_specific_settings": {
+    "gecko": {"id": "hello-world@pchemguy", "strict_min_version": "140.0"}
+  },
+  "sidebar_action": {"default_title": "Hello World", "default_panel": "index.html"},
+  "content_security_policy": {"extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; connect-src 'none'"}
+}

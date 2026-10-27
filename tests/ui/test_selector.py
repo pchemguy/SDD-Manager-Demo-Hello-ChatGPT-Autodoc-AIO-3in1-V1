@@ -57,7 +57,7 @@ def test_restore_independence_and_listener_disposal(app):
 def test_static_subpath(page,tmp_path):
     import http.server,threading,functools,shutil
     target=tmp_path/'nested'/'hello';target.parent.mkdir()
-    shutil.copytree(ROOT/'build/browser',target)
+    shutil.copytree(Path(os.environ.get('HELLO_UI_ROOT',str(ROOT/'build/browser'))),target)
     handler=functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(tmp_path))
     server=http.server.ThreadingHTTPServer(('127.0.0.1',0),handler)
     thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()

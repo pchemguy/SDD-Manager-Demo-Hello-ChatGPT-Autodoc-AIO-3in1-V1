@@ -58,3 +58,35 @@ python -m pytest tests/desktop tests/packaging -q
 ```
 
 Electron 45.0.0 win32-x64 and its official archive SHA-256 are pinned in toolchain.json. The packaging script checks integrity before safe extraction, preserves the complete runtime/notices, adds resources/app, removes the stock demo and renames the launcher HelloWorld.exe. No Wine, native executable editing, global Electron install or separate user Node.js is required. Native Windows execution remains untested on this Linux host.
+
+## Chromium side panel
+
+```text
+node scripts/build.mjs chromium
+python -m pytest tests/extensions -q -k chromium
+```
+
+Use built output, not source manifest templates; version comes from package.json. The worker uses Chrome 142 open/closed events and authenticated window-scoped ports. Session tokens, per-port sequence validation and readiness acknowledgments preserve a live selection during reconnection and reject obsolete/wrong-window messages. Tests cover the real worker in a modeled API harness and the real panel bridge/DOM in both working browsers. They do not claim native sidePanel events. Full Chromium launch was already diagnosed as host socket EPERM with --no-sandbox; native panel checks remain excluded on this host.
+
+## Firefox sidebar
+
+```text
+node scripts/build.mjs firefox
+python -m pytest tests/extensions -q
+```
+
+Firefox uses its MV3 sidebar_action with a stable Gecko ID and a Firefox 140 floor. It reuses the canonical browser bootstrap and requests no storage or host permissions. Module/manifest/shared-document checks passed; recreated documents start red. Load the built manifest or final ZIP through about:debugging temporary add-on loading, then select Hello World in the native sidebar chooser. Temporary installation is removed on browser restart. This is not a signed or store-distributed add-on.
+
+A native temporary-install capability probe was attempted through the isolated managed Firefox driver. The internal about:debugging navigation timed out under both load and commit waits; subsequent privileged capability inspection was unresponsive. Native installation/sidebar events are not claimed by the passing shared-document tests.
+
+The bounded native Firefox probe was stopped at 180 seconds; a subsequent exact-binary process check found no remaining owned Firefox process. This native installation attempt is excluded, not a passing add-on test.
+
+## Complete cumulative release set
+
+```text
+python scripts/package.py release --phase 3
+python scripts/package.py verify --phase 3
+python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q
+```
+
+The four named ZIPs, INSTALL.md and SHA256SUMS belong to the same root version and source identity. The publisher rebuilds at the pinned default-branch release commit and verifies actual uploaded/downloaded bytes. Raw platform manifests are templates; always load built/extracted packages. HELLO_UI_ROOT lets the common UI suite exercise an extracted artifact directly. Native-only unavailable checks are recorded explicitly in reports, not counted as passed or hidden as generic skips.

@@ -53,3 +53,7 @@ Maintain project-specific navigation and validated setup/check commands here as 
 ## Verified development environment
 
 See [development setup](docs/DEVELOPMENT.md) and [browser provisioning evidence](docs/dev/reports/phases/1/ENVIRONMENT.md). Tests run with python -m pytest, using project-local .tools/python on PYTHONPATH and .tools/browsers on PLAYWRIGHT_BROWSERS_PATH. Do not confuse environment probes with application acceptance.
+
+## Validated product checks
+
+See docs/DEVELOPMENT.md. node scripts/build.mjs accepts browser, desktop, chromium and firefox. python scripts/package.py release --phase 3 builds the cumulative artifacts; verify --phase 3 checks them. Run python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q with the documented project-local dependency/browser environment. The unique executable owner is docs/dev/TASKS.md. Preserve native Windows/sidebar verification exclusions without claiming native compatibility.

@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Hello World",
+  "description": "A three-color Hello World selector in the side panel.",
+  "minimum_chrome_version": "142",
+  "permissions": ["sidePanel"],
+  "side_panel": {"default_path": "index.html"},
+  "action": {"default_title": "Open Hello World"},
+  "background": {"service_worker": "background.js"},
+  "content_security_policy": {"extension_pages": "default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; connect-src 'none'"}
+}
