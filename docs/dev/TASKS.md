@@ -8,11 +8,13 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 - [ ] Phase 1 — Browser baseline
     - [ ] Milestone 1.1 — Usable browser package
-        - [ ] T-001 — Establish pinned browser verification environment
+        - [x] T-001 — Establish pinned browser verification environment
             Scope: package.json at 0.1.0, requirements-dev.txt, test fixtures in tests/conftest.py and tests/environment/, owned .tools paths/exclusions, initial docs/DEVELOPMENT.md and validated root navigation. Establish Node/Python readiness and exact pinned pytest/Playwright versions without a required global install or venv. Do not implement future platform hosts.
             Depends on: accepted/published preparation integration and verified phase 1 tracking activation.
             Acceptance: dedicated managed Chromium and Firefox identities, finite process/launch/action deadlines, at least two input/render/session/teardown cycles per available required mode, and actual screenshot inspection. Diagnose provisioning and EPERM at the failing operation using repository guidance; distinguish Chromium shell/full modes and test Firefox independently. Unavailable full-browser modes are excluded under policy with tested alternatives recorded; failed feasible checks remain unresolved. No application acceptance claim from this task.
             Verification: python -m pytest tests/environment -q; record exact setup commands, runner and browser versions/modes, trusted provisioning evidence, actual results and limitations in docs/dev/reports/phases/1/ENVIRONMENT.md. Validate dependency exclusion and absence of credential tracking. Make only validated commands discoverable from AGENTS/README.
+            Completion evidence: Pinned 10 project-local dependency versions and verified official OCI image/layer digests and managed browser revisions. Environment suite: 2 passed, two input/render/context teardown cycles each; screenshots inspected. Firefox uid_map EPERM recovered with explicitly scoped process-local override. Full Chromium headless with --no-sandbox fails on host-denied Unix socket; native full-browser checks excluded under repository policy. See reports/phases/1/ENVIRONMENT.md. No product acceptance inferred.
+
         - [ ] T-002 — Implement the shared accessible color selector
             Scope: app/index.html, app/styles.css, app/app.js, app/bootstrap.js, scripts/build.mjs browser path and tests/ui/ plus focused tests/build/. Build the canonical static page with native labeled radios and a mount/reset/dispose boundary. Keep framework/platform globals and persistent storage out of shared code.
             Depends on: T-001.
