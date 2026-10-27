@@ -58,3 +58,12 @@ python -m pytest tests/desktop tests/packaging -q
 ```
 
 Electron 45.0.0 win32-x64 and its official archive SHA-256 are pinned in toolchain.json. The packaging script checks integrity before safe extraction, preserves the complete runtime/notices, adds resources/app, removes the stock demo and renames the launcher HelloWorld.exe. No Wine, native executable editing, global Electron install or separate user Node.js is required. Native Windows execution remains untested on this Linux host.
+
+## Chromium side panel
+
+```text
+node scripts/build.mjs chromium
+python -m pytest tests/extensions -q -k chromium
+```
+
+Use built output, not source manifest templates; version comes from package.json. The worker uses Chrome 142 open/closed events and authenticated window-scoped ports. Session tokens, per-port sequence validation and readiness acknowledgments preserve a live selection during reconnection and reject obsolete/wrong-window messages. Tests cover the real worker in a modeled API harness and the real panel bridge/DOM in both working browsers. They do not claim native sidePanel events. Full Chromium launch was already diagnosed as host socket EPERM with --no-sandbox; native panel checks remain excluded on this host.
