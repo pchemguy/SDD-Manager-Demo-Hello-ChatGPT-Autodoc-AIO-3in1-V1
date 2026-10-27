@@ -1,0 +1,8 @@
+{
+  "electronVersion": "45.0.0",
+  "archiveURL": "https://github.com/electron/electron/releases/download/v45.0.0/electron-v45.0.0-win32-x64.zip",
+  "archiveSize": 158223852,
+  "archiveSHA256": "ae53887a23bb640369c93dbd38c408a2af5c0deb86f2fa76c6c244cb444b7f47",
+  "checksumURL": "https://github.com/electron/electron/releases/download/v45.0.0/SHASUMS256.txt",
+  "checksumSHA256": "5882ee4d3f943f567cdb6df9bf86e78de9c369e41d9093daaa2e3acaa630093b"
+}

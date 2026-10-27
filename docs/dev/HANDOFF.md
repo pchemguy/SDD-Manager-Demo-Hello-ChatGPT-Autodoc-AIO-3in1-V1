@@ -1,9 +1,7 @@
 # Project handoff
 
-Checkpoint: phase 1 complete task boundary T-004; integration and release pending.
+Checkpoint: phase 2 T-008 complete; [phase report](reports/phases/2/PHASE-REPORT.md) and [TASKS](TASKS.md) own evidence. Portable Windows plus browser assets verified; native Windows execution untested.
 
-Browser baseline and verified static archive ready. [Phase report](reports/phases/1/PHASE-REPORT.md), [milestone report](reports/phases/1/1.1.md), [TASKS](TASKS.md) and [environment](reports/phases/1/ENVIRONMENT.md) own evidence.
+User authorized full T-001 through T-012 and releases. Working phase/2-windows-desktop from main at 2ff3576be77653eb61a0a72b48178a5066c22bfd; target main. Release 0.1.0 is published and byte-verified.
 
-Authorized: full T-001 through T-012 and cumulative releases after each integrated phase, per user Run QC and implement. Working phase/1-browser-baseline; parent/target main from 1c47661ed5b8a1593638f07b6dd64cfba499a8c5.
-
-Publish/read back T-004, close its issue and milestone 1.2, audit phase task persistence, explicitly integrate/verify/publish main, then release 0.1.0 from its default-branch release commit with actual asset download hashes. Only afterward activate authorized phase 2. Native Windows/full-Chromium unavailable; feasible checks passed.
+Next: publish/read back T-008, close its issue and review milestone 2.2, audit task persistence and integrate/verify/publish the complete phase. Create release 0.2.0 only from the actual default-branch release commit with both archives, instructions and checksums; verify downloaded bytes. Then activate phase 3. No full-Chromium/native-Windows success claim.

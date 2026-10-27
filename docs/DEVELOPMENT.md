@@ -39,3 +39,22 @@ python -m pytest tests/build tests/packaging tests/ui -q
 ```
 
 Artifacts are allowlisted, checksummed deterministic ZIPs under dist. Never package the repository or credential file. Rebuild after choosing the final release commit so version.json identifies its exact source.
+
+## Desktop host
+
+```text
+node scripts/build.mjs desktop
+python -m pytest tests/desktop tests/build tests/ui -q
+```
+
+The generated build/desktop/app contains a minimal Electron entry and the identical renderer assets. Host security/resource tests execute the real entry using a modeled Electron API and real filesystem resources in a path containing spaces. They are not native Windows launch evidence. Windows runtime packaging is a separate delivery task.
+
+## Windows runtime packaging
+
+```text
+python scripts/package.py release --phase 2
+python scripts/package.py verify --phase 2
+python -m pytest tests/desktop tests/packaging -q
+```
+
+Electron 45.0.0 win32-x64 and its official archive SHA-256 are pinned in toolchain.json. The packaging script checks integrity before safe extraction, preserves the complete runtime/notices, adds resources/app, removes the stock demo and renames the launcher HelloWorld.exe. No Wine, native executable editing, global Electron install or separate user Node.js is required. Native Windows execution remains untested on this Linux host.
