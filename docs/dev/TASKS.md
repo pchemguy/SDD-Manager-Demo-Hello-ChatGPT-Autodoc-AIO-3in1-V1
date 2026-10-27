@@ -1,0 +1,98 @@
+# Implementation tasks
+
+This is the sole executable product task list. [SPEC](SPEC.md) owns behavior; [PLAN](PLAN.md) owns phase/milestone outcomes and exits; [layout](layout.md) owns paths. All tasks are initially unchecked. Commands below are interfaces to establish and validate during the owning task, not evidence of completed implementation. Use pytest as the test runner and the repository browser policies for setup and coverage limits.
+
+Each delivery task includes its meaningful tests and affected user/developer documentation. For behavior changes, observe an appropriate failing test before implementation and record actual results. Record task evidence with its result and initial checkbox completion in one task commit, then publish/read back and close its tracked issue. Standalone delivery-milestone review tasks are omitted because every phase has one delivery milestone; final delivery tasks carry the full milestone review/report/HANDOFF obligations.
+
+## Phase 1 — Browser baseline
+
+- [ ] Phase 1 — Browser baseline
+    - [ ] Milestone 1.1 — Usable browser package
+        - [ ] T-001 — Establish pinned browser verification environment
+            Scope: package.json at 0.1.0, requirements-dev.txt, test fixtures in tests/conftest.py and tests/environment/, owned .tools paths/exclusions, initial docs/DEVELOPMENT.md and validated root navigation. Establish Node/Python readiness and exact pinned pytest/Playwright versions without a required global install or venv. Do not implement future platform hosts.
+            Depends on: accepted/published preparation integration and verified phase 1 tracking activation.
+            Acceptance: dedicated managed Chromium and Firefox identities, finite process/launch/action deadlines, at least two input/render/session/teardown cycles per available required mode, and actual screenshot inspection. Diagnose provisioning and EPERM at the failing operation using repository guidance; distinguish Chromium shell/full modes and test Firefox independently. Unavailable full-browser modes are excluded under policy with tested alternatives recorded; failed feasible checks remain unresolved. No application acceptance claim from this task.
+            Verification: python -m pytest tests/environment -q; record exact setup commands, runner and browser versions/modes, trusted provisioning evidence, actual results and limitations in docs/dev/reports/phases/1/ENVIRONMENT.md. Validate dependency exclusion and absence of credential tracking. Make only validated commands discoverable from AGENTS/README.
+        - [ ] T-002 — Implement the shared accessible color selector
+            Scope: app/index.html, app/styles.css, app/app.js, app/bootstrap.js, scripts/build.mjs browser path and tests/ui/ plus focused tests/build/. Build the canonical static page with native labeled radios and a mount/reset/dispose boundary. Keep framework/platform globals and persistent storage out of shared code.
+            Depends on: T-001.
+            Contracts: R1-R5, A1-A2; C1-C3 and C8 browser assembly.
+            Acceptance: exact text/labels/order/colors, initial red, exclusive immediate changes by radio/label/keyboard, repeat and rapid selection, visible focus, disposal without duplicate listeners, reload/history restoration and independent pages. Verify 200/320/1200-pixel layouts and 200 percent zoom/text enlargement with reachable controls and no horizontal overflow. Browser output uses relative local assets and opens without a development server.
+            Verification: node scripts/build.mjs browser; python -m pytest tests/ui tests/build -q against built output in available managed Chromium/Firefox. Inspect actual rendered screenshots, focus and computed colors; test both file opening and a static subpath. Record RED/GREEN and effective coverage; update docs/DEVELOPMENT.md.
+        - [ ] T-003 — Package and verify the browser release assets
+            Scope: browser portion of scripts/package.py, tests/packaging/, docs/INSTALL.md, README, browser release metadata and affected build checks. Produce the 0.1.0 browser ZIP and release INSTALL.md/SHA256SUMS from an explicit source allowlist. Add meaningful missing-reference, unsafe-path, secret-exclusion and version-mismatch checks; no Electron or extension runtime setup.
+            Depends on: T-001, T-002.
+            Contracts: R5,R9-R10,A6 and regression of R1-R4.
+            Acceptance: extract the actual final archive, verify local entry/assets, source identity, version, safe paths and absence of credentials/repository/dev files; execute applicable UI checks from extracted content. Installation guidance describes local file/static-host use and required browser environment, without claiming future platforms exist.
+            Verification: python scripts/package.py release --phase 1; python scripts/package.py verify --phase 1; python -m pytest tests/build tests/packaging tests/ui -q. Retain exact archive SHA-256 and source identity in owning evidence.
+            Milestone exit: perform whole-capability code review separately from test execution, fix blockers, confirm milestone 1.1 exits and demonstrate usable initial/keyboard/pointer/narrow behavior. Include docs/dev/reports/phases/1/1.1.md and refreshed HANDOFF with this task result and initial checkbox. Report TODO: None or eligible non-critical findings with stable IDs/options/owners. No standalone milestone review task.
+    - [ ] Milestone 1.2 — Phase review
+        - [ ] T-004 — Review test and report phase 1
+            Scope: phase 1 cross-component/source/package review, applicable fixes/checks, release-ready 0.1.0 notes and docs/dev/reports/phases/1/PHASE-REPORT.md with HANDOFF. This task does not publish a release before integration.
+            Depends on: milestone 1.1 complete and its task issues/milestone closed and read back; T-001 through T-003.
+            Acceptance: verify PLAN phase 1 exits, review UI/build/package interactions, no unresolved SPEC/PLAN violation, actual archive identities and verification limits. Audit one-task result/evidence/checklist commit boundaries. Keep phase review milestone at exactly this one task.
+            Verification: node scripts/build.mjs browser; python scripts/package.py release --phase 1; python scripts/package.py verify --phase 1; python -m pytest tests/ui tests/build tests/packaging -q, with evidence scope selected from the actual change. Retain code-review findings and TODOs separately from test counts. Commit/publish this verified task, close/read back its issue and phase-review milestone, then coordinate complete phase integration, merged-state checks and default-branch release 0.1.0 publication/readback under PLAN. Do not activate phase 2 until its predecessor release and authorization are established.
+
+## Phase 2 — Windows desktop
+
+- [ ] Phase 2 — Windows desktop
+    - [ ] Milestone 2.1 — Portable desktop package
+        - [ ] T-005 — Add the isolated Electron application host
+            Scope: platforms/electron/main.cjs, desktop path in scripts/build.mjs, tests/desktop/ host/resource fixtures and version 0.2.0 metadata. Generate a minimal desktop resources/app manifest and load canonical renderer assets through the restricted local protocol. No preload, privileged renderer API or forked UI.
+            Depends on: phase 1 integrated/published and release 0.1.0 verified; T-004; authorized phase 2 range and verified phase 2 tracking activation.
+            Contracts: R4,R6; C4 and C8, preserving R1-R5.
+            Acceptance: startup creates one application window, closing the last exits, a new process initializes red. Explicit sandbox/context-isolation/Node settings and denial of permission requests, unexpected navigation/new windows, unsupported resource paths, encoded traversal and paths outside renderer root. Main entry and metadata resolve packaged resources in paths containing spaces.
+            Verification: node scripts/build.mjs desktop; python -m pytest tests/desktop tests/build tests/ui -q. Use bounded host API/path harnesses and extracted renderer checks; perform native launch cases when available and distinguish them from modeled checks. Preserve browser behavior and update docs/DEVELOPMENT.md.
+        - [ ] T-006 — Assemble the portable Windows runtime package
+            Scope: toolchain.json, Electron portion of scripts/package.py and tests/desktop/ and tests/packaging/. Pin a supported exact official Electron win32-x64 release, archive/checksum identity and trusted download provenance. Add it only for this desktop delivery.
+            Depends on: T-005.
+            Contracts: R6,R9,A3,A6; C9.
+            Acceptance: verify official archive SHA-256 before safe extraction; reject checksum mismatch, truncated downloads, escaping archive entries and incomplete runtime. Assemble the complete Electron distribution with resources/app and notices; remove the stock demo only. Actual ZIP contains an x64 Windows PE executable, runtime dependencies and correct application/renderer entry assets. It requires no separate Node.js or server. Preserve source/checksum evidence and no Authenticode claim.
+            Verification: node scripts/build.mjs desktop; python scripts/package.py release --phase 2; python -m pytest tests/desktop tests/packaging -q including failure fixtures and actual distribution inventory/architecture. Extract into a path containing spaces and inspect all resolved references. Native Windows execution is conditional on an available facility and reported untested otherwise, without an added blocker or waiver request.
+        - [ ] T-007 — Verify cumulative browser and Windows delivery
+            Scope: cumulative phase 2 assembly/checks in scripts/package.py, tests/build/, tests/packaging/, docs/INSTALL.md, README and affected renderer regression checks. Regenerate browser/desktop packages at the same version 0.2.0.
+            Depends on: T-005, T-006.
+            Contracts: applicable R1-R6,R9-R10 and A1-A3,A6.
+            Acceptance: actual browser/Windows archives agree on version and shared UI identities, both contain complete required assets/notices, and instructions describe full extraction/launch plus unsigned portable status. Browser remains usable independently; no accidental dependence on desktop/runtime files. Retain checksums for both final archives and release-readiness evidence.
+            Verification: python scripts/package.py release --phase 2; python scripts/package.py verify --phase 2; python -m pytest tests/ui tests/build tests/desktop tests/packaging -q. Apply available-host scope and inspect screenshots from the browser/desktop renderer asset set without claiming native Windows output.
+            Milestone exit: whole-capability code review, required regressions, blocker repairs and PLAN 2.1 exit/demonstration evidence. Include docs/dev/reports/phases/2/2.1.md and refreshed HANDOFF with this task result and initial checkbox; distinguish excluded native checks and retained TODOs. No standalone milestone review task.
+    - [ ] Milestone 2.2 — Phase review
+        - [ ] T-008 — Review test and report phase 2
+            Scope: desktop/browser integration and package/source review, applicable repairs/checks, release-ready 0.2.0 notes, docs/dev/reports/phases/2/PHASE-REPORT.md and HANDOFF.
+            Depends on: milestone 2.1 complete and its issues/milestone closed/read back; T-005 through T-007.
+            Acceptance: all phase 2 exits and earlier browser guarantees established within feasible coverage; no unresolved contract failure or incomplete package. Code review and tests remain distinct. Audit task commit/checklist boundaries and retain precise Windows execution limits. Exactly one phase review task.
+            Verification: python scripts/package.py release --phase 2; python scripts/package.py verify --phase 2; python -m pytest tests/ui tests/build tests/desktop tests/packaging -q as relevant. Retain report findings/TODOs and archive identities, commit/publish the task and complete verified issue/milestone closure. Coordinate complete phase integration, merged-state verification and cumulative release 0.2.0 with asset download equality; do not claim publication before it happens. Phase 3 requires that completed predecessor and actual continuation authority.
+
+## Phase 3 — Browser sidebars
+
+- [ ] Phase 3 — Browser sidebars
+    - [ ] Milestone 3.1 — Dual sidebar packages
+        - [ ] T-009 — Add the Chromium side panel lifecycle adapter
+            Scope: platforms/chromium/manifest.json, panel.js and background.js, Chromium path in scripts/build.mjs, tests/extensions/ adapter/native scenarios, version 0.3.0 metadata and affected shared-asset build tests.
+            Depends on: phase 2 integrated/published with release 0.2.0 verified; T-008; authorized phase 3 range and verified phase 3 tracking activation.
+            Contracts: R4,R7,A4; C5-C6 and C8. Preserve shared R1-R3,R5-R6.
+            Acceptance: MV3 side panel/action and minimum Chrome 142; only sidePanel permission and local code. Reset each opening even for retained documents, readiness races and worker reconnection; reject malformed/wrong-window/stale messages; preserve a still-open selection through tab changes, resizing, focus loss and reconnection. A window A lifecycle event cannot change window B. No color storage or broad host permissions.
+            Verification: node scripts/build.mjs chromium; python -m pytest tests/extensions -q -k chromium; run applicable shared UI/build regressions. Verify API event routing with a bounded adapter harness, then load the built extension in a dedicated capable full-Chromium persistent context where available and exercise actual lifecycle/input. Follow bounded launch/EPERM and shell fallback guidance; shell page checks do not establish native sidePanel behavior. Record unavailable native cases distinctly; never mark modeled events as native passes.
+        - [ ] T-010 — Add the Firefox sidebar entry
+            Scope: platforms/firefox/manifest.json, Firefox build path, tests/extensions/ manifest/entry/native scenarios and development installation guidance. Reuse canonical browser bootstrap; no background color state or compatibility layer.
+            Depends on: T-009 for version/shared builder readiness; Firefox delivery remains independent of Chromium runtime APIs.
+            Contracts: R4,R8,A5; C7-C8.
+            Acceptance: MV3, stable Gecko ID, Firefox 140 minimum and local sidebar_action entry. Initial load and new sidebar documents start red; close/reopen discards selection and tab/focus/resize while open preserves it. No host/storage permissions or content scripts. Package can be loaded as a temporary development add-on under documented Firefox procedures, without signed/permanent installation claims.
+            Verification: node scripts/build.mjs firefox; python -m pytest tests/extensions -q -k firefox plus shared UI/build regressions. Load the actual extracted extension temporarily in a suitable isolated Firefox host where available, check sidebar open/change/reopen and independent windows, and record host/version/evidence. Keep ordinary Playwright Firefox page tests and native add-on tests distinct; Playwright page automation alone is not proof of native extension installation.
+        - [ ] T-011 — Package and verify every delivered platform
+            Scope: phase 3 cumulative assembly in scripts/package.py, tests/packaging/, relevant build/extension regression checks, docs/INSTALL.md and README. Produce browser, Windows, Chromium-dev and Firefox-dev archives at version 0.3.0, plus final release instructions/checksums.
+            Depends on: T-009, T-010, with prior desktop packaging retained.
+            Contracts: R1-R10 and applicable A1-A6.
+            Acceptance: both extension ZIPs have root manifests and every local reference; no secrets, repository metadata, unneeded permissions or external runtime assets. All four actual archives share correct version and canonical UI identities. Browser and desktop remain usable; instructions distinguish unpacked Chromium, temporary unsigned Firefox and unsigned portable Windows. Verify the exact final asset set, safe paths, checksum/version errors and extracted-artifact behavior.
+            Verification: python scripts/package.py release --phase 3; python scripts/package.py verify --phase 3; python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q with capabilities/exclusions recorded. Native-only checks are selectable rather than silently skipped as coverage; report excluded counts and reasons. Inspect narrow rendered output for both extension asset sets and available native sidebars.
+            Milestone exit: whole-capability code review, cross-platform regressions, all required blocker repairs, PLAN 3.1 exits/demonstration and TODO review. Include docs/dev/reports/phases/3/3.1.md and refreshed HANDOFF in this task's result/initial checkbox commit. No standalone milestone review task.
+    - [ ] Milestone 3.2 — Phase review
+        - [ ] T-012 — Review test and report the complete application
+            Scope: final cross-platform/source/package review, applicable repairs/checks, release-ready 0.3.0 notes, docs/dev/reports/phases/3/PHASE-REPORT.md, docs/dev/reports/IMPLEMENTATION-REPORT.md and HANDOFF.
+            Depends on: milestone 3.1 complete and all its task issues/milestone closed/read back; T-009 through T-011; earlier phase evidence remains valid.
+            Acceptance: full intended scope and all feasible phase exits covered; code review and actual test evidence separated; all four required packages verified. Aggregate unresolved/deferred findings with stable provenance, impact, rationale, solution options and owners, or TODO: None. No required SPEC/PLAN violation may be deferred. Audit per-task persistence and retain native/full-browser exclusions without compatibility claims. Exactly one phase review task.
+            Verification: python scripts/package.py release --phase 3; python scripts/package.py verify --phase 3; python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q as applicable. Include final report/HANDOFF with task completion and publish/read back. After verified issue/review-milestone closure, coordinate full phase integration/merged-state checks and default-branch release 0.3.0 with all archive uploads and downloaded-byte equality. Final reporting must distinguish implemented, integrated and published states; stop at the authorized completion boundary.
+
+## Cross-phase execution boundaries
+
+The special phase review follows delivery milestone closure; its own review milestone closes afterward. Each complete phase integrates into its recorded parent before the release tag is created on the actual default-branch release commit. Finalize notes, version/source coverage and exact asset bytes before publication; if source changes, rebuild/recheck affected outputs. Hosted releases and phase activation are coordinated operations under PLAN and the SDD Manager release lifecycle, not unverified checkbox side effects. Preserve partial-phase stops and do not activate future phase objects early.
