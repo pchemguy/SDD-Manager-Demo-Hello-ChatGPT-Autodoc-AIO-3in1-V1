@@ -29,3 +29,13 @@ python -m pytest tests/ui tests/build -q
 ```
 
 Open build/browser/index.html directly or copy that directory to a static host. HELLO_UI_ROOT selects an extracted static build for the shared UI suite. Actual UI checks passed in Chromium shell and Firefox; two zoom overflow failures were corrected by reducing fluid control spacing.
+
+## Package browser release
+
+```text
+python scripts/package.py release --phase 1
+python scripts/package.py verify --phase 1
+python -m pytest tests/build tests/packaging tests/ui -q
+```
+
+Artifacts are allowlisted, checksummed deterministic ZIPs under dist. Never package the repository or credential file. Rebuild after choosing the final release commit so version.json identifies its exact source.

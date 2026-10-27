@@ -7,7 +7,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 ## Phase 1 — Browser baseline
 
 - [ ] Phase 1 — Browser baseline
-    - [ ] Milestone 1.1 — Usable browser package
+    - [x] Milestone 1.1 — Usable browser package
         - [x] T-001 — Establish pinned browser verification environment
             Scope: package.json at 0.1.0, requirements-dev.txt, test fixtures in tests/conftest.py and tests/environment/, owned .tools paths/exclusions, initial docs/DEVELOPMENT.md and validated root navigation. Establish Node/Python readiness and exact pinned pytest/Playwright versions without a required global install or venv. Do not implement future platform hosts.
             Depends on: accepted/published preparation integration and verified phase 1 tracking activation.
@@ -23,7 +23,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Verification: node scripts/build.mjs browser; python -m pytest tests/ui tests/build -q against built output in available managed Chromium/Firefox. Inspect actual rendered screenshots, focus and computed colors; test both file opening and a static subpath. Record RED/GREEN and effective coverage; update docs/DEVELOPMENT.md.
             Completion evidence: Built shared native-radio UI/controller and local static assembler. Initial missing-entry fixture error was not behavioral RED evidence; subsequent real two-browser zoom tests failed (2 failed, 6 passed), then CSS spacing repair yielded 10 passed in 13.20s. Verified exact RGB/exclusivity, label/keyboard/focus, resize/200-percent CSS zoom, reload/history restore, listener remount, two independent pages, file URL and nested static subpath. Chromium screenshot inspected with visible red Hello World and stacked controls. No platform imports/storage/runtime network dependencies.
 
-        - [ ] T-003 — Package and verify the browser release assets
+        - [x] T-003 — Package and verify the browser release assets
             Scope: browser portion of scripts/package.py, tests/packaging/, docs/INSTALL.md, README, browser release metadata and affected build checks. Produce the 0.1.0 browser ZIP and release INSTALL.md/SHA256SUMS from an explicit source allowlist. Add meaningful missing-reference, unsafe-path, secret-exclusion and version-mismatch checks; no Electron or extension runtime setup.
             Depends on: T-001, T-002.
             Contracts: R5,R9-R10,A6 and regression of R1-R4.
@@ -31,6 +31,8 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Verification: python scripts/package.py release --phase 1; python scripts/package.py verify --phase 1; python -m pytest tests/build tests/packaging tests/ui -q. Retain exact archive SHA-256 and source identity in owning evidence.
             Milestone exit: perform whole-capability code review separately from test execution, fix blockers, confirm milestone 1.1 exits and demonstrate usable initial/keyboard/pointer/narrow behavior. Include docs/dev/reports/phases/1/1.1.md and refreshed HANDOFF with this task result and initial checkbox. Report TODO: None or eligible non-critical findings with stable IDs/options/owners. No standalone milestone review task.
     - [ ] Milestone 1.2 — Phase review
+            Completion evidence: Browser ZIP/INSTALL/SHA256SUMS created and verified from allowlisted assets. Rejection tests RED: 5 unsafe paths accepted; GREEN full built suite 17 passed in 13.94s. Actual archive extracted and UI suite passed (see milestone report). Whole-capability code review found no unresolved violation; milestone 1.1 report and HANDOFF included. TODO None. No desktop/extension delivery claimed.
+
         - [ ] T-004 — Review test and report phase 1
             Scope: phase 1 cross-component/source/package review, applicable fixes/checks, release-ready 0.1.0 notes and docs/dev/reports/phases/1/PHASE-REPORT.md with HANDOFF. This task does not publish a release before integration.
             Depends on: milestone 1.1 complete and its task issues/milestone closed and read back; T-001 through T-003.
