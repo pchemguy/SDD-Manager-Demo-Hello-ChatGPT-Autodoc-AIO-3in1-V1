@@ -21,8 +21,9 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 | --- | --- |
 | DOCS-001 | All four root files existed and were preserved byte for byte, checked against baseline SHA-256 identities. Task list copied from the same repository-pinned SDD Manager 0.15.4 package. Default provenance setup completed as described below. Initialization completion is in this commit; publication and issue closure must be read back before dependent work. |
 | DOCS-002 | PROJECT proposal SHA-256 fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; human approval received in the user response "OK." on 2026-10-27; approved bytes retained unchanged. Reviewed against the complete user scope, document role and root instructions; all three platforms and cumulative artifact releases covered. Lifecycle and distribution choices accepted with the brief. DOCS-002 completion accompanies this approval record. |
-| DOCS-003 through DOCS-008 | Not started; later document approvals preapproved by autodoc. |
 | DOCS-009 | Not authorized by autodoc stop; remains pending. |
+
+| DOCS-003 | Define shared UI and isolated platform hosts Autodoc scoped preapproval applies. Reviewed approved PROJECT coverage, ownership and dependency direction, lifecycle reset design, source-backed platform constraints, package isolation and product-document content boundaries. No unresolved architecture blocker; runtime/API evidence remains to be collected during implementation. Content identities: docs/dev/ARCHITECTURE.md SHA-256 a7d383106368f0a75a857189f687e1cb2bd26dc6c09672b0cfc3d3d095c262d7. |
 
 ## Initialization
 
@@ -36,4 +37,4 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 
 ## Pending transitions
 
-Initialization and PROJECT proposal publication were verified. Publish/read back this approval commit and close/read back DOCS-002 issue #2 before ARCHITECTURE. Stop after DOCS-008 remains controlling.
+Publish/read back the DOCS-003 completion commit, then close/read back its preparation issue before dependent progression. Continue only through DOCS-008; package QC and implementation remain outside the current range.
