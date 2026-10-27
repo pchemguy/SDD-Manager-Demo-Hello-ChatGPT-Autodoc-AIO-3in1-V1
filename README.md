@@ -1,7 +1,7 @@
 # Hello World
 
-A browser application, portable Windows Electron application and Chromium/Firefox sidebar extensions with a shared three-color selector.
+A tiny color selector: Hello World and three vertically stacked native radio buttons. The browser baseline works without Node.js, a development server or backend.
 
-[Project documents](docs/dev/PROJECT.md) and the [implementation task list](docs/dev/TASKS.md) define the delivery scope. Implementation and packages are pending.
+See [installation](docs/INSTALL.md), [development and checks](docs/DEVELOPMENT.md), and [project scope](docs/dev/PROJECT.md). Windows and sidebar packages follow in bounded delivery phases.
 
 Development uses [SDD Manager](SDD-MANAGER.md). See [AI disclosure](AI_DISCLOSURE.md).

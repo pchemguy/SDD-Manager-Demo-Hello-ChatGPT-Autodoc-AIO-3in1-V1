@@ -6,28 +6,34 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 ## Phase 1 — Browser baseline
 
-- [ ] Phase 1 — Browser baseline
-    - [ ] Milestone 1.1 — Usable browser package
-        - [ ] T-001 — Establish pinned browser verification environment
+- [x] Phase 1 — Browser baseline
+    - [x] Milestone 1.1 — Usable browser package
+        - [x] T-001 — Establish pinned browser verification environment
             Scope: package.json at 0.1.0, requirements-dev.txt, test fixtures in tests/conftest.py and tests/environment/, owned .tools paths/exclusions, initial docs/DEVELOPMENT.md and validated root navigation. Establish Node/Python readiness and exact pinned pytest/Playwright versions without a required global install or venv. Do not implement future platform hosts.
             Depends on: accepted/published preparation integration and verified phase 1 tracking activation.
             Acceptance: dedicated managed Chromium and Firefox identities, finite process/launch/action deadlines, at least two input/render/session/teardown cycles per available required mode, and actual screenshot inspection. Diagnose provisioning and EPERM at the failing operation using repository guidance; distinguish Chromium shell/full modes and test Firefox independently. Unavailable full-browser modes are excluded under policy with tested alternatives recorded; failed feasible checks remain unresolved. No application acceptance claim from this task.
             Verification: python -m pytest tests/environment -q; record exact setup commands, runner and browser versions/modes, trusted provisioning evidence, actual results and limitations in docs/dev/reports/phases/1/ENVIRONMENT.md. Validate dependency exclusion and absence of credential tracking. Make only validated commands discoverable from AGENTS/README.
-        - [ ] T-002 — Implement the shared accessible color selector
+            Completion evidence: Pinned 10 project-local dependency versions and verified official OCI image/layer digests and managed browser revisions. Environment suite: 2 passed, two input/render/context teardown cycles each; screenshots inspected. Firefox uid_map EPERM recovered with explicitly scoped process-local override. Full Chromium headless with --no-sandbox fails on host-denied Unix socket; native full-browser checks excluded under repository policy. See reports/phases/1/ENVIRONMENT.md. No product acceptance inferred.
+
+        - [x] T-002 — Implement the shared accessible color selector
             Scope: app/index.html, app/styles.css, app/app.js, app/bootstrap.js, scripts/build.mjs browser path and tests/ui/ plus focused tests/build/. Build the canonical static page with native labeled radios and a mount/reset/dispose boundary. Keep framework/platform globals and persistent storage out of shared code.
             Depends on: T-001.
             Contracts: R1-R5, A1-A2; C1-C3 and C8 browser assembly.
             Acceptance: exact text/labels/order/colors, initial red, exclusive immediate changes by radio/label/keyboard, repeat and rapid selection, visible focus, disposal without duplicate listeners, reload/history restoration and independent pages. Verify 200/320/1200-pixel layouts and 200 percent zoom/text enlargement with reachable controls and no horizontal overflow. Browser output uses relative local assets and opens without a development server.
             Verification: node scripts/build.mjs browser; python -m pytest tests/ui tests/build -q against built output in available managed Chromium/Firefox. Inspect actual rendered screenshots, focus and computed colors; test both file opening and a static subpath. Record RED/GREEN and effective coverage; update docs/DEVELOPMENT.md.
-        - [ ] T-003 — Package and verify the browser release assets
+            Completion evidence: Built shared native-radio UI/controller and local static assembler. Initial missing-entry fixture error was not behavioral RED evidence; subsequent real two-browser zoom tests failed (2 failed, 6 passed), then CSS spacing repair yielded 10 passed in 13.20s. Verified exact RGB/exclusivity, label/keyboard/focus, resize/200-percent CSS zoom, reload/history restore, listener remount, two independent pages, file URL and nested static subpath. Chromium screenshot inspected with visible red Hello World and stacked controls. No platform imports/storage/runtime network dependencies.
+
+        - [x] T-003 — Package and verify the browser release assets
             Scope: browser portion of scripts/package.py, tests/packaging/, docs/INSTALL.md, README, browser release metadata and affected build checks. Produce the 0.1.0 browser ZIP and release INSTALL.md/SHA256SUMS from an explicit source allowlist. Add meaningful missing-reference, unsafe-path, secret-exclusion and version-mismatch checks; no Electron or extension runtime setup.
             Depends on: T-001, T-002.
             Contracts: R5,R9-R10,A6 and regression of R1-R4.
             Acceptance: extract the actual final archive, verify local entry/assets, source identity, version, safe paths and absence of credentials/repository/dev files; execute applicable UI checks from extracted content. Installation guidance describes local file/static-host use and required browser environment, without claiming future platforms exist.
             Verification: python scripts/package.py release --phase 1; python scripts/package.py verify --phase 1; python -m pytest tests/build tests/packaging tests/ui -q. Retain exact archive SHA-256 and source identity in owning evidence.
             Milestone exit: perform whole-capability code review separately from test execution, fix blockers, confirm milestone 1.1 exits and demonstrate usable initial/keyboard/pointer/narrow behavior. Include docs/dev/reports/phases/1/1.1.md and refreshed HANDOFF with this task result and initial checkbox. Report TODO: None or eligible non-critical findings with stable IDs/options/owners. No standalone milestone review task.
-    - [ ] Milestone 1.2 — Phase review
-        - [ ] T-004 — Review test and report phase 1
+    - [x] Milestone 1.2 — Phase review
+            Completion evidence: Browser ZIP/INSTALL/SHA256SUMS created and verified from allowlisted assets. Rejection tests RED: 5 unsafe paths accepted; GREEN full built suite 17 passed in 13.94s. Actual archive extracted and UI suite passed (see milestone report). Whole-capability code review found no unresolved violation; milestone 1.1 report and HANDOFF included. TODO None. No desktop/extension delivery claimed.
+
+        - [x] T-004 — Review test and report phase 1
             Scope: phase 1 cross-component/source/package review, applicable fixes/checks, release-ready 0.1.0 notes and docs/dev/reports/phases/1/PHASE-REPORT.md with HANDOFF. This task does not publish a release before integration.
             Depends on: milestone 1.1 complete and its task issues/milestone closed and read back; T-001 through T-003.
             Acceptance: verify PLAN phase 1 exits, review UI/build/package interactions, no unresolved SPEC/PLAN violation, actual archive identities and verification limits. Audit one-task result/evidence/checklist commit boundaries. Keep phase review milestone at exactly this one task.
@@ -37,6 +43,8 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 - [ ] Phase 2 — Windows desktop
     - [ ] Milestone 2.1 — Portable desktop package
+            Completion evidence: Phase source/package review completed; added failing canonical-secret fixture and repaired explicit credential rejection. Final suite 18 passed in 11.95s; prior extracted-archive UI 8 passed remains applicable. Task persistence audit T-001 through T-003 verified. Phase report/HANDOFF, review milestone status and release-ready notes included; integration/publication remain pending. TODO None.
+
         - [ ] T-005 — Add the isolated Electron application host
             Scope: platforms/electron/main.cjs, desktop path in scripts/build.mjs, tests/desktop/ host/resource fixtures and version 0.2.0 metadata. Generate a minimal desktop resources/app manifest and load canonical renderer assets through the restricted local protocol. No preload, privileged renderer API or forked UI.
             Depends on: phase 1 integrated/published and release 0.1.0 verified; T-004; authorized phase 2 range and verified phase 2 tracking activation.

@@ -49,3 +49,7 @@ Follow `sdd-manage`'s preparation and phase-activation workflows for required tr
 ## Project guidance
 
 Maintain project-specific navigation and validated setup/check commands here as they become established. Do not invent commands, paths, requirements or completion claims.
+
+## Verified development environment
+
+See [development setup](docs/DEVELOPMENT.md) and [browser provisioning evidence](docs/dev/reports/phases/1/ENVIRONMENT.md). Tests run with python -m pytest, using project-local .tools/python on PYTHONPATH and .tools/browsers on PLAYWRIGHT_BROWSERS_PATH. Do not confuse environment probes with application acceptance.
