@@ -4,9 +4,9 @@
 
 - Mode: autodoc/onepass, explicitly selected in the project request on 2026-10-27.
 - Scope: complete Hello World application across browser, Windows Electron and Chromium/Firefox sidebar extensions, delivered in that order.
-- Approval basis: PROJECT approved by the user response "OK." on 2026-10-27 to proposal commit d1c86e888029abdfb6038a76ab6e54c17a229110. ARCHITECTURE through TASKS checkpoints are preapproved by autodoc selection. No implementation range or whole-package QC advance has been selected.
+- Approval basis: PROJECT approved by the user response "OK." on 2026-10-27 to proposal commit d1c86e888029abdfb6038a76ab6e54c17a229110. ARCHITECTURE through TASKS checkpoints are preapproved by autodoc selection. The later user instruction Run QC and implement authorized whole-package QC and all twelve implementation tasks; all are now complete.
 - Tracking: enabled for preparation and implementation by root AGENTS.md. The sdd-docs-main milestone and all nine exact bundled issue definitions were created and read back before repository writes.
-- Next boundary: complete remaining documents through DOCS-008 and stop before DOCS-009, package integration and implementation.
+- Current boundary: preparation, whole-package QC, implementation, integration and three cumulative releases are complete.
 - Reporting: concise Standard; preserve material choices, blockers and checkpoints.
 
 ## Scope and decisions
@@ -27,7 +27,7 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 | DOCS-006 | Plan three bounded platform deliveries Autodoc scoped preapproval applies. PLAN/SPEC strategy QC Ready for layout. Reviewed one delivery milestone per phase, explicit small-count rationale, all R1-R10 delivery routes, folded milestone reviews, single-task phase review milestones and cumulative post-integration releases. Combined layout readiness remains pending. Content identities: docs/dev/PLAN.md SHA-256 03d1747bfc80fa4c6b74115756f5dff3894130ef82efe80c73eccf2614ebb35d; docs/dev/PLAN-REVIEW-REPORT.md SHA-256 15723815597fd79aefde0360ffd03e639d208400c246c9d60697c8ace477c299. |
 | DOCS-007 | Allocate source tests and release artifacts Autodoc scoped preapproval applies. Combined PLAN/layout QC Ready for TASKS. PLAN report Revision 1 retains initial strategy evidence and adds exact layout identity, C1-C9 ownership, test/command routing, generated-output exclusions and canonical-asset reuse checks. No product implementation created. Content identities: docs/dev/layout.md SHA-256 a95e5161f109d5cea5f1f6d9747dd403381fb2c46c0097fb714b1acf7e0b5a8c; docs/dev/PLAN-REVIEW-REPORT.md SHA-256 e0b3fb3ebcc5437ee718eee0d21858b7c934a2069dfa38c82614113064f16458. |
 | DOCS-008 | Derive twelve bounded platform implementation tasks Autodoc scoped preapproval applies. TASKS/PLAN conformance Ready with 3 phases, 6 milestones and 12 unique unchecked tasks. Per-milestone counts are 3 delivery tasks plus a separate single-task phase review; folded milestone reports/HANDOFF and final report are assigned. Stop before DOCS-009; no whole-package QC, integration or implementation activated. Content identities: docs/dev/TASKS.md SHA-256 28b84d3a3b5b11b07f39977f85c32922141285f2609a7ae30f2434c63e9259b9; docs/dev/TASKS-REVIEW-REPORT.md SHA-256 0060a0dd0e194aeeb4c08c858a9bbc0aba2d796593403ea6b9a76b76764d9559; docs/dev/HANDOFF.md SHA-256 6dbb7493d61d6e6151e259c1f1c168482ec7e35962c15a8d9be741c1badc4c3e. |
-| DOCS-009 | Not authorized by autodoc stop; remains pending. |
+| DOCS-009 | Authorized by Run QC and implement; whole-package QC Ready, bounded wording/README repairs verified, published and issue closed before documentation integration. See DOCS-QC-REPORT.md. |
 
 ## Initialization
 
@@ -39,10 +39,10 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 - Credential exclusion verified with Git before protected conventional token storage. Credential remains untracked and excluded.
 - Current reset: none; onepass.
 
-## Pending transitions
+## Completed transitions
 
-Publish/read back the DOCS-008 completion commit, then close/read back its preparation issue before dependent progression. Autodoc stop reached: DOCS-009, package integration, implementation and releases remain pending human direction.
+The DOCS-008 autodoc stop was cleared by the subsequent implementation instruction. DOCS-009 and documentation integration completed before phase activation. All implementation phases and releases are complete; see reports/IMPLEMENTATION-REPORT.md for final provider and verification evidence.
 
 ## QC and implementation authorization
 
-The user instruction Run QC and implement authorizes DOCS-009, bounded repairs, documentation integration and full T-001 through T-012 execution with cumulative releases after each integrated phase. It clears the prior autodoc stop and final implementation checkpoint. Whole-package QC is Ready; see DOCS-QC-REPORT.md. Publish this commit, close issue #9, merge/publish documentation and close sdd-docs-main before phase 1 activation. Prior proposal identities remain historical; PROJECT final wording changes no accepted scope.
+The user instruction Run QC and implement authorizes DOCS-009, bounded repairs, documentation integration and full T-001 through T-012 execution with cumulative releases after each integrated phase. It clears the prior autodoc stop and final implementation checkpoint. Whole-package QC is Ready; see DOCS-QC-REPORT.md. The QC commit was published/read back, issue #9 closed, documentation merged/published and sdd-docs-main closed before phase 1 activation. Prior proposal identities remain historical; PROJECT final wording changes no accepted scope.
