@@ -42,3 +42,7 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 ## Pending transitions
 
 Publish/read back the DOCS-008 completion commit, then close/read back its preparation issue before dependent progression. Autodoc stop reached: DOCS-009, package integration, implementation and releases remain pending human direction.
+
+## QC and implementation authorization
+
+The user instruction Run QC and implement authorizes DOCS-009, bounded repairs, documentation integration and full T-001 through T-012 execution with cumulative releases after each integrated phase. It clears the prior autodoc stop and final implementation checkpoint. Whole-package QC is Ready; see DOCS-QC-REPORT.md. Publish this commit, close issue #9, merge/publish documentation and close sdd-docs-main before phase 1 activation. Prior proposal identities remain historical; PROJECT final wording changes no accepted scope.

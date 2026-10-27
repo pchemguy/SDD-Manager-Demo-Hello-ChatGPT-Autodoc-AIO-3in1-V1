@@ -8,11 +8,11 @@ Display the exact message "Hello World" and a group of three vertically stacked 
 
 Share application logic and UI across all platforms while separating platform entry points, packaging and lifecycle handling. Keep the browser and desktop versions available as extensions are added. Support a narrow, resizable sidebar without losing the message or any control.
 
-## Interaction and lifecycle proposals
+## Interaction and lifecycle
 
 Use native radio controls with clickable labels, visible keyboard focus and standard keyboard selection. Pointer and keyboard selection have the same immediate effect. Re-selecting the active option leaves the current selection unchanged.
 
-Keep selection session-only and local to each open application instance. Fresh pages, reloads, new desktop windows and newly opened sidebars start red. Closing and reopening a sidebar starts red; merely resizing, moving focus or switching tabs while it remains open preserves the selection. Closing the desktop application and relaunching starts red. Multiple instances do not synchronize their selections. These lifecycle choices are proposed for approval.
+Keep selection session-only and local to each open application instance. Fresh pages, reloads, new desktop windows and newly opened sidebars start red. Closing and reopening a sidebar starts red; merely resizing, moving focus or switching tabs while it remains open preserves the selection. Closing the desktop application and relaunching starts red. Multiple instances do not synchronize their selections. These lifecycle rules apply to every delivered platform.
 
 The layout remains usable in narrow panels and with ordinary text zoom; controls stay vertically stacked. Small viewports may scroll vertically, and no capability is hidden behind a separate settings screen.
 
@@ -24,9 +24,9 @@ Deliver three bounded platform increments, in order:
 2. Windows Electron: the same UI in a packaged desktop application bundling its runtime assets; retain the browser build.
 3. Extensions: Chromium and Firefox sidebar packages delivered together; retain browser and Windows packages.
 
-Proposed versions are 0.1.0, 0.2.0 and 0.3.0 respectively. After each platform increment is implemented, verified and integrated, publish its version tag and GitHub release. Each release contains deployable or installable packages for every platform delivered by that point, installation instructions and verification limitations.
+Versions are 0.1.0, 0.2.0 and 0.3.0 respectively. After each platform increment is implemented, verified and integrated, publish its version tag and GitHub release. Each release contains deployable or installable packages for every platform delivered by that point, installation instructions and verification limitations.
 
-Proposed desktop distribution is an unsigned portable Windows x64 ZIP that launches after extraction. Proposed extension distribution consists of separate development packages for Chromium and Firefox with explicit loading instructions; signing and store publication are outside the proposed delivery. Instructions must identify restrictions on temporary/development loading and must not imply signed or store-distributed installation.
+Desktop distribution is an unsigned portable Windows x64 ZIP that launches after extraction. Extension distribution consists of separate development packages for Chromium and Firefox with explicit loading instructions; signing and store publication are outside delivery. Instructions must identify restrictions on temporary/development loading and must not imply signed or store-distributed installation.
 
 ## Quality and verification
 
@@ -38,4 +38,4 @@ The current execution host is Linux. Windows artifacts may be cross-built and in
 
 The application has no required persistent data, cookie or URL configuration, file import/export, backend, accounts, settings panel or selection synchronization. Conditional platform-adaptation instructions do not add these capabilities.
 
-The lifecycle and distribution choices above are proposals. Shared plain HTML, CSS and JavaScript is the recommended implementation direction because this scope needs only native controls and a small amount of state; framework choice and detailed component/package boundaries remain with ARCHITECTURE. Browser support floors, exact package tooling and reproducible verification commands will be established against platform documentation during detailed preparation.
+Shared plain HTML, CSS and JavaScript is the recommended implementation direction because this scope needs only native controls and a small amount of state; framework choice and detailed component/package boundaries remain with ARCHITECTURE. Browser support floors, exact package tooling and reproducible verification commands will be established against platform documentation during detailed preparation.

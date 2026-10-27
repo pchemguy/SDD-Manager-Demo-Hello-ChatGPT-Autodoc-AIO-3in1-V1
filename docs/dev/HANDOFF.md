@@ -32,3 +32,7 @@ Outcome: PROJECT approved by the user and ARCHITECTURE, DECOMPOSITION, SPEC, PLA
 - This DOCS-008 completion commit must be published/read back before closing/readback of issue #8. Prior DOCS-001 through DOCS-007 publication/closures were verified. Reconcile current provider/Git state before replaying a pending operation.
 - DOCS-009 remains unchecked, issue #9 and sdd-docs-main remain open. All 12 product tasks remain unchecked; no implementation phase objects are active.
 - After DOCS-008 publication/closure, wait for human direction. An explicit QC advance selects whole-package review and its established integration/milestone-finalization sequence; preserve the separate implementation-range checkpoint.
+
+## Current authorized boundary
+
+User instruction Run QC and implement advances to DOCS-009 and full T-001 through T-012, including verification, phase integration and cumulative releases. Package QC Ready: DOCS-QC-REPORT.md. Next: publish/read back this QC commit; close issue #9; integrate design-docs/main into main, verify/publish, close documentation milestone, then activate phase 1. Earlier stop paragraphs describe the prior checkpoint and are superseded by this grant.
