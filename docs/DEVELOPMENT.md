@@ -39,3 +39,12 @@ python -m pytest tests/build tests/packaging tests/ui -q
 ```
 
 Artifacts are allowlisted, checksummed deterministic ZIPs under dist. Never package the repository or credential file. Rebuild after choosing the final release commit so version.json identifies its exact source.
+
+## Desktop host
+
+```text
+node scripts/build.mjs desktop
+python -m pytest tests/desktop tests/build tests/ui -q
+```
+
+The generated build/desktop/app contains a minimal Electron entry and the identical renderer assets. Host security/resource tests execute the real entry using a modeled Electron API and real filesystem resources in a path containing spaces. They are not native Windows launch evidence. Windows runtime packaging is a separate delivery task.

@@ -45,12 +45,14 @@ Each delivery task includes its meaningful tests and affected user/developer doc
     - [ ] Milestone 2.1 — Portable desktop package
             Completion evidence: Phase source/package review completed; added failing canonical-secret fixture and repaired explicit credential rejection. Final suite 18 passed in 11.95s; prior extracted-archive UI 8 passed remains applicable. Task persistence audit T-001 through T-003 verified. Phase report/HANDOFF, review milestone status and release-ready notes included; integration/publication remain pending. TODO None.
 
-        - [ ] T-005 — Add the isolated Electron application host
+        - [x] T-005 — Add the isolated Electron application host
             Scope: platforms/electron/main.cjs, desktop path in scripts/build.mjs, tests/desktop/ host/resource fixtures and version 0.2.0 metadata. Generate a minimal desktop resources/app manifest and load canonical renderer assets through the restricted local protocol. No preload, privileged renderer API or forked UI.
             Depends on: phase 1 integrated/published and release 0.1.0 verified; T-004; authorized phase 2 range and verified phase 2 tracking activation.
             Contracts: R4,R6; C4 and C8, preserving R1-R5.
             Acceptance: startup creates one application window, closing the last exits, a new process initializes red. Explicit sandbox/context-isolation/Node settings and denial of permission requests, unexpected navigation/new windows, unsupported resource paths, encoded traversal and paths outside renderer root. Main entry and metadata resolve packaged resources in paths containing spaces.
             Verification: node scripts/build.mjs desktop; python -m pytest tests/desktop tests/build tests/ui -q. Use bounded host API/path harnesses and extracted renderer checks; perform native launch cases when available and distinguish them from modeled checks. Preserve browser behavior and update docs/DEVELOPMENT.md.
+            Completion evidence: Added isolated Electron main host and desktop builder at 0.2.0, sharing all renderer assets. RED modeled startup expected one window but scaffold created zero (1 failed); GREEN 11 host/build/UI tests passed in 12.74s. Real host entry exercised through modeled Electron API with real resources under a spaced path; verifies sandbox/context isolation/no Node, menu/new-window/navigation/permission denial, valid MIME and traversal/unsupported method/path rejection, final-window quit. Native Windows launch not tested.
+
         - [ ] T-006 — Assemble the portable Windows runtime package
             Scope: toolchain.json, Electron portion of scripts/package.py and tests/desktop/ and tests/packaging/. Pin a supported exact official Electron win32-x64 release, archive/checksum identity and trusted download provenance. Add it only for this desktop delivery.
             Depends on: T-005.
