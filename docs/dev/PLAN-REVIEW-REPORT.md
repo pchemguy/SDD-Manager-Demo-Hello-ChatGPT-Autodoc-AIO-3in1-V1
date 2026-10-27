@@ -2,7 +2,7 @@
 
 ## Current gate
 
-State: Ready for layout authoring; TASKS readiness remains pending combined PLAN/layout QC. PLAN SHA-256 03d1747bfc80fa4c6b74115756f5dff3894130ef82efe80c73eccf2614ebb35d. No focused children or existing layout. Governing hashes: SPEC 9a0d288aabe1839f790f45b2d2f6bacc2f11d350b18e4aa562b48dcddb611cc6; PROJECT fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; ARCHITECTURE a7d383106368f0a75a857189f687e1cb2bd26dc6c09672b0cfc3d3d095c262d7; DECOMPOSITION f5b6c4c7ca13e31f4bda6ef17646cfe8a35a76ad4f2426637e81952c0db57e8f. Current SPEC/design Ready evidence is [SPEC-REVIEW-REPORT](SPEC-REVIEW-REPORT.md).
+State: Ready for TASKS after combined PLAN/layout QC (Revision 1). PLAN SHA-256 03d1747bfc80fa4c6b74115756f5dff3894130ef82efe80c73eccf2614ebb35d. No focused children or existing layout. Governing hashes: SPEC 9a0d288aabe1839f790f45b2d2f6bacc2f11d350b18e4aa562b48dcddb611cc6; PROJECT fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; ARCHITECTURE a7d383106368f0a75a857189f687e1cb2bd26dc6c09672b0cfc3d3d095c262d7; DECOMPOSITION f5b6c4c7ca13e31f4bda6ef17646cfe8a35a76ad4f2426637e81952c0db57e8f. Current SPEC/design Ready evidence is [SPEC-REVIEW-REPORT](SPEC-REVIEW-REPORT.md).
 
 Owner strategy review on 2026-10-27. Product-document content boundaries, dependency order, version coverage, review units and feasible exit evidence checked. No confirmed unresolved strategy finding. This does not execute any product or package test.
 
@@ -24,3 +24,11 @@ The 1-2 milestone count diagnostic was explicitly reviewed for every phase. One 
 | R9-R10,A6 | Artifact/error/integrity/installation coverage at every applicable phase, with cumulative post-integration releases and downloaded-byte verification. |
 
 No PLAN requirement changes SPEC or imports a platform before its intended delivery. Every milestone requires integrated capability review and a report; one delivery milestone per phase folds those obligations into its final delivery task. Each final phase review remains exactly one task. Layout coverage is intentionally pending at this strategy checkpoint, so no claim of TASKS readiness is made.
+
+## Revision 1 — Combined layout review
+
+On 2026-10-27, reviewed the new layout against unchanged PLAN and governing design/SPEC. No strategy correction was required. Initial strategy findings remain none; this revision completes the deliberately pending physical-placement assessment rather than inventing a defect.
+
+Layout SHA-256 a95e5161f109d5cea5f1f6d9747dd403381fb2c46c0097fb714b1acf7e0b5a8c. PLAN SHA-256 03d1747bfc80fa4c6b74115756f5dff3894130ef82efe80c73eccf2614ebb35d remains unchanged.
+
+Checked all C1-C9 homes, source-to-test routing, common asset identity, platform entry overrides, allowlisted packaging, ignored outputs/secrets, runtime cache isolation and report paths. Each of the three delivery milestones has a bounded path to an actual integrated artifact. Planned commands are explicitly unimplemented interfaces; environment provisioning and native coverage are not claimed. Existing repository plugin/manual files are preserved. All significant components have an owner and suitable verification seam; no ambiguous ownership or confirmed unresolved placement finding remains. Gate: Ready for TASKS; runtime execution and whole-package QC remain distinct.
