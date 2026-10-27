@@ -22,6 +22,8 @@ def test_chromium_panel_reopen_duplicate_stale_and_reconnect(page):
     send('one',1)
     page.get_by_text('blue',exact=True).click();send('one',2)
     expect(page.get_by_role('heading')).to_have_css('color','rgb(0, 0, 255)')
+    page.evaluate("TestPorts[0].emit({type:'session',windowId:11,token:'bogus',sequence:999,reset:false})")
+    expect(page.get_by_role('heading')).to_have_css('color','rgb(0, 0, 255)')
     send('other',100,True,99);send('two',3)
     expect(page.get_by_role('radio',name='red',exact=True)).to_be_checked()
     page.get_by_text('green',exact=True).click();send('one',4)

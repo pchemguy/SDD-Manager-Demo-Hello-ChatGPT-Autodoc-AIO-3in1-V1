@@ -26,3 +26,9 @@ restarted.chrome.sidePanel.onClosed.emit({windowId:10});restarted.chrome.sidePan
 const hostile=w.connect(30,null,{id:'foreign',url:'chrome-extension://own/index.html'});assert(hostile.disconnected);assert.equal(hostile.sent.length,0);
 const malformed=w.connect(1.5);assert.equal(malformed.sent.length,0);
 console.log('Modeled Chromium lifecycle ordering, reconnection, isolation and sender validation passed');
+const ordered=worker();ordered.chrome.sidePanel.onOpened.emit({windowId:31});const openedFirst=ordered.connect(31);assert.equal(openedFirst.sent.at(-1).reset,true,'Open-before-ready delivers pending reset');
+const initial=openedFirst.sent.at(-1).token;ordered.chrome.sidePanel.onClosed.emit({windowId:31});ordered.chrome.sidePanel.onOpened.emit({windowId:31});
+openedFirst.onMessage.emit({type:'applied',windowId:31,token:initial});
+const pending=ordered.connect(31,initial);assert.equal(pending.sent.at(-1).reset,true,'Stale acknowledgment cannot clear a newer opening reset');
+const wrongPath=ordered.connect(32,null,{id:'own',url:'chrome-extension://own/other.html'});assert(wrongPath.disconnected);
+const tabPage=ordered.connect(33,null,{id:'own',url:'chrome-extension://own/index.html',tab:{id:1}});assert(tabPage.disconnected);

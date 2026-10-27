@@ -1,6 +1,6 @@
 # Implementation tasks
 
-This is the sole executable product task list. [SPEC](SPEC.md) owns behavior; [PLAN](PLAN.md) owns phase/milestone outcomes and exits; [layout](layout.md) owns paths. All tasks are initially unchecked. Commands below are interfaces to establish and validate during the owning task, not evidence of completed implementation. Use pytest as the test runner and the repository browser policies for setup and coverage limits.
+This is the sole executable product task list. [SPEC](SPEC.md) owns behavior; [PLAN](PLAN.md) owns phase/milestone outcomes and exits; [layout](layout.md) owns paths. Task completion and current verification evidence are recorded below. Commands below are interfaces to establish and validate during the owning task, not evidence of completed implementation. Use pytest as the test runner and the repository browser policies for setup and coverage limits.
 
 Each delivery task includes its meaningful tests and affected user/developer documentation. For behavior changes, observe an appropriate failing test before implementation and record actual results. Record task evidence with its result and initial checkbox completion in one task commit, then publish/read back and close its tracked issue. Standalone delivery-milestone review tasks are omitted because every phase has one delivery milestone; final delivery tasks carry the full milestone review/report/HANDOFF obligations.
 
@@ -79,7 +79,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 ## Phase 3 — Browser sidebars
 
-- [ ] Phase 3 — Browser sidebars
+- [x] Phase 3 — Browser sidebars
     - [x] Milestone 3.1 — Dual sidebar packages
             Completion evidence: Phase 2 code review and cumulative package acceptance complete; 22 fresh tests passed in 18.78s and package verification passed. Prior actual extracted-Windows renderer 8 UI checks remains applicable. Single-task result/evidence/checklist boundaries verified for T-005 through T-007. Reports, HANDOFF and review status included; TODO None. Integration/release publication remain pending; native Windows execution untested.
 
@@ -106,14 +106,16 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Acceptance: both extension ZIPs have root manifests and every local reference; no secrets, repository metadata, unneeded permissions or external runtime assets. All four actual archives share correct version and canonical UI identities. Browser and desktop remain usable; instructions distinguish unpacked Chromium, temporary unsigned Firefox and unsigned portable Windows. Verify the exact final asset set, safe paths, checksum/version errors and extracted-artifact behavior.
             Verification: python scripts/package.py release --phase 3; python scripts/package.py verify --phase 3; python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q with capabilities/exclusions recorded. Native-only checks are selectable rather than silently skipped as coverage; report excluded counts and reasons. Inspect narrow rendered output for both extension asset sets and available native sidebars.
             Milestone exit: whole-capability code review, cross-platform regressions, all required blocker repairs, PLAN 3.1 exits/demonstration and TODO review. Include docs/dev/reports/phases/3/3.1.md and refreshed HANDOFF in this task's result/initial checkbox commit. No standalone milestone review task.
-    - [ ] Milestone 3.2 — Phase review
+    - [x] Milestone 3.2 — Phase review
             Completion evidence: Implemented complete cumulative 0.3.0 browser/Windows/Chromium-dev/Firefox-dev release assembly and exact extension manifest, capabilities, source, version, entry/shared bytes, inventory, CRC, credential and checksum checks. Final-set RED failed before implementation. Combined suite 32 passed in 22.85s; extracted UI suites each passed 8 (32 total across four artifacts). Rendered screenshots inspected and retained. Whole-capability review, milestone report/HANDOFF and final install/native-limit instructions included. Native Windows/sidebar checks explicitly excluded; TODO None.
 
-        - [ ] T-012 — Review test and report the complete application
+        - [x] T-012 — Review test and report the complete application
             Scope: final cross-platform/source/package review, applicable repairs/checks, release-ready 0.3.0 notes, docs/dev/reports/phases/3/PHASE-REPORT.md, docs/dev/reports/IMPLEMENTATION-REPORT.md and HANDOFF.
             Depends on: milestone 3.1 complete and all its task issues/milestone closed/read back; T-009 through T-011; earlier phase evidence remains valid.
             Acceptance: full intended scope and all feasible phase exits covered; code review and actual test evidence separated; all four required packages verified. Aggregate unresolved/deferred findings with stable provenance, impact, rationale, solution options and owners, or TODO: None. No required SPEC/PLAN violation may be deferred. Audit per-task persistence and retain native/full-browser exclusions without compatibility claims. Exactly one phase review task.
             Verification: python scripts/package.py release --phase 3; python scripts/package.py verify --phase 3; python -m pytest tests/ui tests/build tests/desktop tests/extensions tests/packaging -q as applicable. Include final report/HANDOFF with task completion and publish/read back. After verified issue/review-milestone closure, coordinate full phase integration/merged-state checks and default-branch release 0.3.0 with all archive uploads and downloaded-byte equality. Final reporting must distinguish implemented, integrated and published states; stop at the authorized completion boundary.
+
+            Completion evidence: Complete application code/package review passed. Fixed P3-001 default pytest collection excluding tests/build and expanded lifecycle/unknown-session characterization. Fresh default suite 34 passed in 26.63s; four-platform verification passed; prior 32 actual extracted-artifact UI checks remain applicable. Final phase and implementation reports/HANDOFF included with initial task and parent completion. All findings resolved, TODO None; native Windows/sidebar limits explicit. Integration and release 0.3.0 publication still pending.
 
 ## Cross-phase execution boundaries
 

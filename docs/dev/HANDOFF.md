@@ -1,7 +1,7 @@
 # Project handoff
 
-Checkpoint: phase 3 milestone 3.1, T-011. [Milestone report](reports/phases/3/3.1.md), [TASKS](TASKS.md) and [development](../DEVELOPMENT.md) own current evidence. All four 0.3.0 archives verified; 32 product checks and 32 extracted-artifact UI checks passed. Native Windows/sidebar evidence remains excluded and explicit.
+Checkpoint: T-012 phase 3/final implementation review. [Final report](reports/IMPLEMENTATION-REPORT.md), [phase report](reports/phases/3/PHASE-REPORT.md), and [TASKS](TASKS.md) own evidence. All product tasks complete after this task-owned commit; 34 default checks and 32 extracted-artifact checks pass, with native Windows/sidebar limits explicit.
 
-Authorized all T-001 through T-012 and cumulative releases. Working phase/3-browser-sidebars; creation parent/integration target main at d8f2ff54d76cf97300822ac3b9e164b94105c3d4. Releases 0.1.0 and 0.2.0 published and downloaded-byte verified.
+User authorized QC and all T-001 through T-012, verification/integration and releases. Current branch phase/3-browser-sidebars; creation parent/integration target main from d8f2ff54d76cf97300822ac3b9e164b94105c3d4. Prior releases 0.1.0 and 0.2.0 are published and downloaded-byte verified.
 
-Publish/read back T-011, close its issue and milestone 3.1, then execute T-012. Complete phase integration and release 0.3.0 before reporting final publication.
+Pending: publish/read back this task commit, close T-012 and milestone 3.2; audit per-task persistence; integrate/verify/publish complete phase; create final default-branch release commit/tag and publish all four 0.3.0 archives, INSTALL and hashes. Verify downloaded bytes and body/latest state, then persist actual final outcome without moving the release tag. No further product work is authorized beyond the completed scope.
