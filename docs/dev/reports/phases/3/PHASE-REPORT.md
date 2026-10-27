@@ -15,3 +15,7 @@ Next: publish/close T-012 and review milestone, integrate/verify/publish complet
 ## T-012 forward verification repair
 
 P3-002: tracked-file audit found broad build/ ignore also excluded tests/build/test_build.py. Earlier checks executed this local test file, but it was not present in prior published task trees. Narrowed root generated-output rules to /build/ and /dist/ and included the previously omitted builder tests in the tracked source. This is a current reproducibility/acceptance repair; it does not rewrite earlier commits or claim those trees contained the omitted file. Hold integration until repaired tracked source is verified and T-012 closure read back. No second initial task closure is created.
+
+## Fresh tracked-checkout recheck
+
+P3-002 resolved. Published repair source 97e866f269f6fe80d7a9bab319bb3b4c272f300a was checked out into a new detached Git worktree. Builder tests were present in its tracked files. Rebuilt/verified all four artifacts from that tree and ran the default suite: 34 passed in 26.97s. No tracked changes remained in the verification checkout. Exact matching project-job dependencies/browser binaries and the checksum-verified Electron cache were reused; no untracked source test was copied into it. Earlier published trees remain unchanged and are not retrospectively claimed to contain the omitted tests. T-012 completion reassessment is cleared; publish this evidence and reclose/read back issue 21 before milestone/phase integration. No second initial task closure.

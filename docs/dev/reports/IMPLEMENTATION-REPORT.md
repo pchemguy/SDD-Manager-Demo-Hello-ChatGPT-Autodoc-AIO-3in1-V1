@@ -21,3 +21,7 @@ None. All confirmed milestone/phase findings were resolved. Unavailable native c
 ## Final tracked-source repair
 
 P3-002 identified a broad ignore rule that omitted the locally executed builder tests from Git. Root output ignores are narrowed and the builder test source is now included. The final source requires fresh tracked-checkout build/test verification before integration. Earlier release/task history is preserved; earlier local builder checks are not presented as tests included in those historical trees.
+
+## Fresh tracked-checkout recheck
+
+P3-002 resolved. Published repair source 97e866f269f6fe80d7a9bab319bb3b4c272f300a was checked out into a new detached Git worktree. Builder tests were present in its tracked files. Rebuilt/verified all four artifacts from that tree and ran the default suite: 34 passed in 26.97s. No tracked changes remained in the verification checkout. Exact matching project-job dependencies/browser binaries and the checksum-verified Electron cache were reused; no untracked source test was copied into it. Earlier published trees remain unchanged and are not retrospectively claimed to contain the omitted tests. T-012 completion reassessment is cleared; publish this evidence and reclose/read back issue 21 before milestone/phase integration. No second initial task closure.
