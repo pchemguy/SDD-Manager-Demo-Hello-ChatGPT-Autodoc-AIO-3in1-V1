@@ -41,7 +41,7 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 ## Phase 2 — Windows desktop
 
-- [ ] Phase 2 — Windows desktop
+- [x] Phase 2 — Windows desktop
     - [x] Milestone 2.1 — Portable desktop package
             Completion evidence: Phase source/package review completed; added failing canonical-secret fixture and repaired explicit credential rejection. Final suite 18 passed in 11.95s; prior extracted-archive UI 8 passed remains applicable. Task persistence audit T-001 through T-003 verified. Phase report/HANDOFF, review milestone status and release-ready notes included; integration/publication remain pending. TODO None.
 
@@ -68,10 +68,10 @@ Each delivery task includes its meaningful tests and affected user/developer doc
             Acceptance: actual browser/Windows archives agree on version and shared UI identities, both contain complete required assets/notices, and instructions describe full extraction/launch plus unsigned portable status. Browser remains usable independently; no accidental dependence on desktop/runtime files. Retain checksums for both final archives and release-readiness evidence.
             Verification: python scripts/package.py release --phase 2; python scripts/package.py verify --phase 2; python -m pytest tests/ui tests/build tests/desktop tests/packaging -q. Apply available-host scope and inspect screenshots from the browser/desktop renderer asset set without claiming native Windows output.
             Milestone exit: whole-capability code review, required regressions, blocker repairs and PLAN 2.1 exit/demonstration evidence. Include docs/dev/reports/phases/2/2.1.md and refreshed HANDOFF with this task result and initial checkbox; distinguish excluded native checks and retained TODOs. No standalone milestone review task.
-    - [ ] Milestone 2.2 — Phase review
+    - [x] Milestone 2.2 — Phase review
             Completion evidence: Verified cumulative browser/Windows 0.2.0 assets, explicit install/unsigned/native-limit guidance and matching shared/source identities. Added failing aggregate-source mismatch regression then source consistency check. Combined suite 22 passed in 22.31s. Actual full Windows ZIP extracted under spaced path; packaged host passed modeled API harness and packaged renderer passed 8 UI checks in 14.46s. Whole-capability code review and milestone 2.1 report/HANDOFF included; TODO None. Native Windows not tested.
 
-        - [ ] T-008 — Review test and report phase 2
+        - [x] T-008 — Review test and report phase 2
             Scope: desktop/browser integration and package/source review, applicable repairs/checks, release-ready 0.2.0 notes, docs/dev/reports/phases/2/PHASE-REPORT.md and HANDOFF.
             Depends on: milestone 2.1 complete and its issues/milestone closed/read back; T-005 through T-007.
             Acceptance: all phase 2 exits and earlier browser guarantees established within feasible coverage; no unresolved contract failure or incomplete package. Code review and tests remain distinct. Audit task commit/checklist boundaries and retain precise Windows execution limits. Exactly one phase review task.
@@ -81,6 +81,8 @@ Each delivery task includes its meaningful tests and affected user/developer doc
 
 - [ ] Phase 3 — Browser sidebars
     - [ ] Milestone 3.1 — Dual sidebar packages
+            Completion evidence: Phase 2 code review and cumulative package acceptance complete; 22 fresh tests passed in 18.78s and package verification passed. Prior actual extracted-Windows renderer 8 UI checks remains applicable. Single-task result/evidence/checklist boundaries verified for T-005 through T-007. Reports, HANDOFF and review status included; TODO None. Integration/release publication remain pending; native Windows execution untested.
+
         - [ ] T-009 — Add the Chromium side panel lifecycle adapter
             Scope: platforms/chromium/manifest.json, panel.js and background.js, Chromium path in scripts/build.mjs, tests/extensions/ adapter/native scenarios, version 0.3.0 metadata and affected shared-asset build tests.
             Depends on: phase 2 integrated/published with release 0.2.0 verified; T-008; authorized phase 3 range and verified phase 3 tracking activation.

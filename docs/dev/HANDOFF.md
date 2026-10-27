@@ -1,7 +1,7 @@
 # Project handoff
 
-Checkpoint: phase 2 milestone 2.1, T-007. [Milestone report](reports/phases/2/2.1.md) and [TASKS](TASKS.md) own current evidence. Browser 0.1.0 release published with byte-verified assets at default release commit 2ff3576be77653eb61a0a72b48178a5066c22bfd.
+Checkpoint: phase 2 T-008 complete; [phase report](reports/phases/2/PHASE-REPORT.md) and [TASKS](TASKS.md) own evidence. Portable Windows plus browser assets verified; native Windows execution untested.
 
-Current work: phase/2-windows-desktop, creation parent/integration target main at 2ff3576be77653eb61a0a72b48178a5066c22bfd. User authorized all tasks/releases. Portable Windows app and cumulative browser assets verified at 0.2.0; no native Windows launch claim.
+User authorized full T-001 through T-012 and releases. Working phase/2-windows-desktop from main at 2ff3576be77653eb61a0a72b48178a5066c22bfd; target main. Release 0.1.0 is published and byte-verified.
 
-Publish/read back T-007, close its issue and milestone 2.1, then T-008 phase review. Complete phase integration and release 0.2.0 before activating phase 3. Full Chromium unavailable because host denies Unix socket even with internal sandbox disabled; working shell/Firefox and modeled/package evidence retained.
+Next: publish/read back T-008, close its issue and review milestone 2.2, audit task persistence and integrate/verify/publish the complete phase. Create release 0.2.0 only from the actual default-branch release commit with both archives, instructions and checksums; verify downloaded bytes. Then activate phase 3. No full-Chromium/native-Windows success claim.
