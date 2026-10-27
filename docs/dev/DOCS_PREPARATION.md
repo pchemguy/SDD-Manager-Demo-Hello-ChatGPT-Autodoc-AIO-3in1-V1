@@ -4,23 +4,23 @@
 
 - Mode: autodoc/onepass, explicitly selected in the project request on 2026-10-27.
 - Scope: complete Hello World application across browser, Windows Electron and Chromium/Firefox sidebar extensions, delivered in that order.
-- Approval basis: PROJECT approval remains active. ARCHITECTURE through TASKS checkpoints are preapproved by autodoc selection. No implementation range or whole-package QC advance has been selected.
+- Approval basis: PROJECT approved by the user response "OK." on 2026-10-27 to proposal commit d1c86e888029abdfb6038a76ab6e54c17a229110. ARCHITECTURE through TASKS checkpoints are preapproved by autodoc selection. No implementation range or whole-package QC advance has been selected.
 - Tracking: enabled for preparation and implementation by root AGENTS.md. The sdd-docs-main milestone and all nine exact bundled issue definitions were created and read back before repository writes.
-- Next boundary: publish initialization, close/read back DOCS-001, then prepare PROJECT for human approval. After approval, complete documents through DOCS-008 and stop before DOCS-009.
+- Next boundary: complete remaining documents through DOCS-008 and stop before DOCS-009, package integration and implementation.
 - Reporting: concise Standard; preserve material choices, blockers and checkpoints.
 
 ## Scope and decisions
 
 The user request is the complete target scope. The baseline displays Hello World and three vertically stacked radio buttons labeled red, blue and green; red is initially selected and the message is red. Exactly one selection controls the message color immediately. Share logic and UI across browser, Windows Electron and both sidebar extensions; keep platform-specific code separate. Runtime packages require no separate Node.js, development server or backend. Each completed, verified, integrated platform phase receives a release including packages for all platforms delivered so far and installation/distribution limitations.
 
-Material proposals for PROJECT review: session-only color selection; every fresh UI and sidebar reopening starts red; native radio keyboard behavior; narrow resizable layout; portable Windows x64 ZIP; development extension packages with signing/store status stated explicitly; versions 0.1.0, 0.2.0 and 0.3.0. These are agent proposals, not accepted human decisions. No persistence, cookie/URL configuration or file operations are introduced.
+Material proposals for PROJECT review: session-only color selection; every fresh UI and sidebar reopening starts red; native radio keyboard behavior; narrow resizable layout; portable Windows x64 ZIP; development extension packages with signing/store status stated explicitly; versions 0.1.0, 0.2.0 and 0.3.0. These choices were accepted with PROJECT by the user response "OK." on 2026-10-27. No persistence, cookie/URL configuration or file operations are introduced.
 
 ## Decisions and document evidence
 
 | Task | Evidence / decision basis |
 | --- | --- |
 | DOCS-001 | All four root files existed and were preserved byte for byte, checked against baseline SHA-256 identities. Task list copied from the same repository-pinned SDD Manager 0.15.4 package. Default provenance setup completed as described below. Initialization completion is in this commit; publication and issue closure must be read back before dependent work. |
-| DOCS-002 | PROJECT proposal SHA-256 fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; human approval pending. Reviewed against the complete user scope, document role and root instructions; all three platforms and cumulative artifact releases covered. Lifecycle and distribution proposals are explicit; no acceptance inferred. DOCS-002 remains unchecked. |
+| DOCS-002 | PROJECT proposal SHA-256 fb2ef7fdcd6cd88e96b8ba652c592ab9211172cbbefe1cab848d9f6e6951fbcb; human approval received in the user response "OK." on 2026-10-27; approved bytes retained unchanged. Reviewed against the complete user scope, document role and root instructions; all three platforms and cumulative artifact releases covered. Lifecycle and distribution choices accepted with the brief. DOCS-002 completion accompanies this approval record. |
 | DOCS-003 through DOCS-008 | Not started; later document approvals preapproved by autodoc. |
 | DOCS-009 | Not authorized by autodoc stop; remains pending. |
 
@@ -36,4 +36,4 @@ Material proposals for PROJECT review: session-only color selection; every fresh
 
 ## Pending transitions
 
-Initialization publication and DOCS-001 issue #1 closure were verified. Publish/read back the PROJECT proposal, then await human approval of that exact state and its lifecycle/distribution proposals before dependent ARCHITECTURE. DOCS-002 issue #2 remains open.
+Initialization and PROJECT proposal publication were verified. Publish/read back this approval commit and close/read back DOCS-002 issue #2 before ARCHITECTURE. Stop after DOCS-008 remains controlling.
