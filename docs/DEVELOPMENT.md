@@ -20,3 +20,12 @@ Each pytest case has a 45-second timeout, with shorter browser launch/navigation
 Normal CDN downloads returned HTML. The matching official Playwright 1.64.1 noble image supplied managed browsers via the bundled Playwright policy fallback; exact manifest/layer identities and extraction checks are recorded in [environment evidence](dev/reports/phases/1/ENVIRONMENT.md). No global browser or dependencies were installed.
 
 On this constrained Linux host only, set HELLO_FIREFOX_UNSANDBOXED=1 for trusted local test pages after diagnosing uid_map EPERM. This opts Firefox into its documented process-local content-sandbox override. Re-evaluate on another host. Full Chromium fails on a host-denied Unix socket even with --no-sandbox; shell and Firefox checks work.
+
+## Browser build
+
+```text
+node scripts/build.mjs browser
+python -m pytest tests/ui tests/build -q
+```
+
+Open build/browser/index.html directly or copy that directory to a static host. HELLO_UI_ROOT selects an extracted static build for the shared UI suite. Actual UI checks passed in Chromium shell and Firefox; two zoom overflow failures were corrected by reducing fluid control spacing.

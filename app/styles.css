@@ -1,0 +1,10 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #243141; background: #f5f6f8; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: clamp(8px, 4vw, 28px); }
+main { max-width: 480px; margin: 0 auto; min-width: 0; }
+h1 { margin: 0 0 28px; font-size: 36px; line-height: 1.15; font-weight: 700; color: red; overflow-wrap: anywhere; }
+fieldset { margin: 0; padding: clamp(4px, 2vw, 16px); border: 1px solid #ccd2da; border-radius: 10px; background: white; min-width: 0; }
+legend { padding: 0 6px; font-size: 14px; font-weight: 600; }
+label { display: flex; align-items: center; gap: 6px; padding: 8px 0; cursor: pointer; }
+input { margin: 0; flex: 0 0 auto; width: 18px; height: 18px; accent-color: #344d70; }
+input:focus-visible { outline: 2px solid #344d70; outline-offset: 3px; }
